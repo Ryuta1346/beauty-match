@@ -1,24 +1,30 @@
-# README
+##開発サービス概要
+・美容室の空き座席をフリーランスの美容師とユーザーが利用できるようにするサービス
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+####目指すべきサービス像
+・美容室はデッドスペースと化した座席の収益化を図れる
 
-Things you may want to cover:
+・美容師は店舗を持たずに施術できるため、資金的な制約を受けずに独立できる
 
-* Ruby version
+・ユーザーは特定の店舗に行かずともお気に入りの美容師に施術してもらえる
 
-* System dependencies
+####既存サービス
+・ホットペッパービューティー:美容室予約の最大手
 
-* Configuration
+・minimo:サロンスタッフ指名型予約サービス
 
-* Database creation
+・リクポ:美容師からの提案型サービス
 
-* Database initialization
+##開発環境
 
-* How to run the test suite
+・Ruby:2.5.1
 
-* Services (job queues, cache servers, search engines, etc.)
+・Rails:5.2.2
 
-* Deployment instructions
+・DB:PostgreSQL
 
-* ...
+・RSpec
+
+・rubocop
+
+・他随時更新
