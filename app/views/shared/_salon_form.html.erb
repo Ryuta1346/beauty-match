@@ -1,0 +1,60 @@
+<h1>Salons#new</h1>
+<%= form_for(@salon) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :prefecture %>
+    <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :place %>
+    <%= f.text_field :place%>
+  </div>
+
+  <div>
+    <%= f.label :manage %>
+    <%= f.text_field :manage %>
+  </div>
+
+  <div>
+    <%= f.label :tel %>
+    <%= f.text_field :tel %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :features %>
+    <%= f.text_field :features %>
+  </div>
+
+  <div>
+    <%= f.label :cut_price %>
+    <%= f.number_field :cut_price %>
+  </div>
+
+  <div>
+    <%= f.label :num_of_stylists %>
+    <%= f.number_field :num_of_stylists %>
+  </div>
+
+  <div>
+    <%= f.label :num_of_sheets %>
+    <%= f.number_field :num_of_sheets %>
+  </div>
+
+  <%= f.submit "Submit"%>
+<% end %>

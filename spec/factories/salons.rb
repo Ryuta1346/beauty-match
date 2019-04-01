@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :salon do
     association :category
     association :prefecture
-    name { "MyString" }
+    name { "RAIMU" }
     place { "MyString" }
     manage { "MyString" }
     tel { "00000000000" }
