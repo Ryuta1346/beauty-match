@@ -1,0 +1,50 @@
+<%= form_for(@stylist) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :salon %>
+    <%= f.collection_select :salon_id, Salon.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :stylist_since %>
+    <%= f.date_select :stylist_since, discard_da: true, discard_month: true, start_year: 1970 %>
+  </div>
+
+  <div>
+    <%= f.label :tel %>
+    <%= f.text_field :tel %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :features %>
+    <%= f.text_field :features %>
+  </div>
+
+  <div>
+    <%= f.label :cut_price %>
+    <%= f.number_field :cut_price %>
+  </div>
+
+  <div>
+    <%= f.label :activity_scope %>
+    <%= f.text_field :activity_scope %>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>

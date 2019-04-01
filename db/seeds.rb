@@ -55,3 +55,6 @@ Prefecture.create(name: "大分")
 Prefecture.create(name: "宮崎")
 Prefecture.create(name: "鹿児島")
 Prefecture.create(name: "沖縄")
+Prefecture.create(name: "None")
+
+Salon.create(category_id:1, prefecture_id:48, name:"free", place: "None", tel: "00000000000", manage: "None", num_of_stylists:9999, num_of_sheets:9999, cut_price:0, features:"None")
