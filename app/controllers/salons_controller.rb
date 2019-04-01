@@ -29,21 +29,29 @@ class SalonsController < ApplicationController
   def update
     @salon = Salon.find(params[:id])
     if @salon.update_attributes(salon_params)
-      flash[:success]= "サロン情報の更新に成功しました"
+      flash[:success] = "サロン情報の更新に成功しました"
       redirect_to salon_url
     else
       flash[:danger] = "サロン情報の更新に失敗しました"
-      render salon_path
+      render 'edit'
     end
   end
 
   def destroy
+    @salon = Salon.find(params[:id])
+    if @salon.destroy
+      flash[:success] = "サロン情報を削除しました"
+      redirect_to root_url
+    else
+      flash[:danger] = "サロン情報の削除に失敗しました"
+      render 'show'
+    end
 
   end
 
   private
 
-  def salon_params
-    params.require(:salon).permit(:category_id, :prefecture_id, :name, :place, :tel, :manage, :num_of_stylists, :num_of_sheets, :cut_price, :features)
-  end
+    def salon_params
+      params.require(:salon).permit(:category_id, :prefecture_id, :name, :place, :tel, :manage, :num_of_stylists, :num_of_sheets, :cut_price, :features)
+    end
 end
