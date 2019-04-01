@@ -46,7 +46,6 @@ class SalonsController < ApplicationController
       flash[:danger] = "サロン情報の削除に失敗しました"
       render 'show'
     end
-
   end
 
   private
