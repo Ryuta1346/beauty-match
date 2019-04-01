@@ -1,0 +1,4 @@
+<h1>Categories#index</h1>
+<%= @categoies.each.with_index(1) do |category, i| %>
+  <%= i %>:<%= category.name %><br/>
+<% end %>
