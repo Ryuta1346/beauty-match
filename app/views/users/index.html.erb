@@ -1,0 +1,4 @@
+<h1>Users#index</h1>
+<% @users.each.with_index(1) do |u, i| %>
+  <%= i %>:<%= u.name %>
+<% end %>

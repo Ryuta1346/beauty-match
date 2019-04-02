@@ -6,7 +6,7 @@ class CreateStylists < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :tel
       t.string :email
-      t.date :stylist_since
+      t.integer :stylist_since
       t.string :activity_scope
       t.integer :cut_price
 

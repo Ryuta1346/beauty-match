@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-Category.create(name: "Hair_salon")
+
+User.create!(name: "Test User", tel:"08000000000", email: "test_user@example.com", birth_year: "1993")
+Category.create!(name: "Hair_salon")
 
 Prefecture.create(name: "北海道")
 Prefecture.create(name: "青森")
@@ -58,3 +60,4 @@ Prefecture.create(name: "沖縄")
 Prefecture.create(name: "None")
 
 Salon.create(category_id:1, prefecture_id:48, name:"free", place: "None", tel: "00000000000", manage: "None", num_of_stylists:9999, num_of_sheets:9999, cut_price:0, features:"None")
+Stylist.create!(salon_id:1, category_id:1, name:"Example Stylist", tel:"00000000000", email:"stylisy@example.com", stylist_since: "2000", activity_scope:"渋谷区", cut_price:"6980", features:"カットの再現性")
