@@ -36,10 +36,12 @@ Airbnb/DefaultScope:
 Layout/IndentationWidth:
   Exclude:
     - 'app/models/salon.rb'
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/salons_controller.rb'
+    - 'app/controllers/*'
 
 Layout/IndentationConsistency:
+  Enabled: false
+
+Layout/EmptyLinesAroundAccessModifier:
   Enabled: false
 
 Layout/TrailingBlankLines:
