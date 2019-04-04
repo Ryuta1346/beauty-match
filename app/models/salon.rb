@@ -1,4 +1,5 @@
 class Salon < ApplicationRecord
+  has_many :salon_reservations
   belongs_to :category
   belongs_to :prefecture
 

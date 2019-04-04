@@ -59,7 +59,7 @@ Prefecture.create(name: "鹿児島")
 Prefecture.create(name: "沖縄")
 Prefecture.create(name: "None")
 
-Salon.create(category_id:     1,
+Salon::Store.create(category_id:     1,
              prefecture_id:   48,
              name:            "free",
              place:           "None",
@@ -70,7 +70,7 @@ Salon.create(category_id:     1,
              cut_price:       0,
              features:        "None")
 
-Salon.create(category_id:     1,
+Salon::Store.create(category_id:     1,
              prefecture_id:   13,
              name:            "Example Salon",
              place:           "渋谷区道玄坂",

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_131313) do
+ActiveRecord::Schema.define(version: 2019_04_04_141354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,24 @@ ActiveRecord::Schema.define(version: 2019_04_04_131313) do
     t.datetime "updated_at", null: false
     t.index ["prefecture_id"], name: "index_salon_reservations_on_prefecture_id"
     t.index ["salon_id"], name: "index_salon_reservations_on_salon_id"
+  end
+
+  create_table "salon_stores", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "prefecture_id"
+    t.string "name"
+    t.string "place"
+    t.string "manager"
+    t.string "tel"
+    t.string "email"
+    t.integer "num_of_stylists"
+    t.integer "num_of_sheets"
+    t.string "features"
+    t.integer "cut_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_salon_stores_on_category_id"
+    t.index ["prefecture_id"], name: "index_salon_stores_on_prefecture_id"
   end
 
   create_table "salons", force: :cascade do |t|
@@ -82,6 +100,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_131313) do
 
   add_foreign_key "salon_reservations", "prefectures"
   add_foreign_key "salon_reservations", "salons"
+  add_foreign_key "salon_stores", "categories"
+  add_foreign_key "salon_stores", "prefectures"
   add_foreign_key "salons", "categories"
   add_foreign_key "salons", "prefectures"
   add_foreign_key "stylists", "categories"
