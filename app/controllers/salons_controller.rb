@@ -1,10 +1,11 @@
 class SalonsController < ApplicationController
+  before_action :set_salon, except: [:index, :new, :create]
+
   def index
     @salons = Salon.all
   end
 
   def show
-    @salon = Salon.find(params[:id])
   end
 
   def new
@@ -23,11 +24,9 @@ class SalonsController < ApplicationController
   end
 
   def edit
-    @salon = Salon.find(params[:id])
   end
 
   def update
-    @salon = Salon.find(params[:id])
     if @salon.update_attributes(salon_params)
       flash[:success] = "サロン情報の更新に成功しました"
       redirect_to salon_url
@@ -38,7 +37,6 @@ class SalonsController < ApplicationController
   end
 
   def destroy
-    @salon = Salon.find(params[:id])
     if @salon.destroy
       flash[:success] = "サロン情報を削除しました"
       redirect_to root_url
@@ -52,5 +50,9 @@ class SalonsController < ApplicationController
 
     def salon_params
       params.require(:salon).permit(:category_id, :prefecture_id, :name, :place, :tel, :manage, :num_of_stylists, :num_of_sheets, :cut_price, :features)
+    end
+
+    def set_salon
+      @salon = Salon.find(params[:id])
     end
 end
