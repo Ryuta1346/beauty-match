@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_131420) do
+ActiveRecord::Schema.define(version: 2019_04_04_131313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2019_04_02_131420) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "salon_reservations", force: :cascade do |t|
+    t.datetime "book_time"
+    t.bigint "salon_id"
+    t.bigint "prefecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_salon_reservations_on_prefecture_id"
+    t.index ["salon_id"], name: "index_salon_reservations_on_salon_id"
   end
 
   create_table "salons", force: :cascade do |t|
@@ -70,6 +80,8 @@ ActiveRecord::Schema.define(version: 2019_04_02_131420) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "salon_reservations", "prefectures"
+  add_foreign_key "salon_reservations", "salons"
   add_foreign_key "salons", "categories"
   add_foreign_key "salons", "prefectures"
   add_foreign_key "stylists", "categories"
