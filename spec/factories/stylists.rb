@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :stylist do
     association :salon
     association :category
-    name { "HurryPotter" }
+    sequence(:name) { |n| "HurryPotter#{n}" }
     tel { "00000000000" }
     email { "MyString" }
     stylist_since { "2019-04-01" }

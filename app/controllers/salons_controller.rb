@@ -1,6 +1,6 @@
 class SalonsController < ApplicationController
   before_action :set_salon, only: [:show]
-  before_action :authenticate_salon!, only: [:show,:new]
+  before_action :authenticate_salon!, only: [:show, :new]
 
 
   def index
@@ -51,11 +51,11 @@ class SalonsController < ApplicationController
 
   private
 
-    # def salon_params
-    #   params.require(:salon).permit(:category_id, :prefecture_id, :name, :place, :tel, :manage, :num_of_stylists, :num_of_sheets, :cut_price, :features)
-    # end
+  # def salon_params
+  #   params.require(:salon).permit(:category_id, :prefecture_id, :name, :place, :tel, :manage, :num_of_stylists, :num_of_sheets, :cut_price, :features)
+  # end
 
-    def set_salon
-      @salon = Salon.find(params[:id])
-    end
+  def set_salon
+    @salon = Salon.find(params[:id])
+  end
 end

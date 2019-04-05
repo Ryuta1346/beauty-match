@@ -9,4 +9,13 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
+  describe "GET #show" do
+    let!(:category) { create(:category) }
+
+    it "returns http success" do
+      get :show, params: { id: category.id }
+      expect(response).to have_http_status(:success)
+    end
+  end
+
 end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :stylists
   resources :users
+  resources :categories, only: [:index, :show]
 
   # resources :salon_reservations
 

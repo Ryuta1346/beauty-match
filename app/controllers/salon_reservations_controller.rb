@@ -9,7 +9,8 @@ class SalonReservationsController < ApplicationController
   end
 
   def show
-    @salon_reservation = SalonReservation.find(params[:id])
+    @salon = Salon.find(params[:salon_id])
+    @salon_reservation = @salon.salon_reservations.find(params[:id])
   end
 
   def new
@@ -44,6 +45,6 @@ class SalonReservationsController < ApplicationController
     end
 
     def set_salon
-      @salon = Salon.find(params[:id])
+      @salon = Salon.find(params[:salon_id])
     end
 end

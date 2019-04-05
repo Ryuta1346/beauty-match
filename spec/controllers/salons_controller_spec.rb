@@ -13,25 +13,9 @@ RSpec.describe SalonsController, type: :controller do
     let!(:salon) { create(:salon) }
 
     it "returns http success" do
+      sign_in salon
       get :show, params: { id: salon.id }
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #edit" do
-    let!(:salon) { create(:salon) }
-
-    it "returns http success" do
-      get :edit, params: { id: salon.id }
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end
