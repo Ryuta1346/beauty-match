@@ -5,7 +5,7 @@ class CreateSalons < ActiveRecord::Migration[5.2]
       t.references :prefecture, foreign_key: true
       t.string :manage
       t.string :tel
-      t.string :email
+      # t.string :email
       t.integer :num_of_stylists
       t.integer :num_of_sheets
       t.string :features

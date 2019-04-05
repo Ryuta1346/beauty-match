@@ -1,7 +1,7 @@
 <h1>SalonReservations#new</h1>
 <p>Find me in app/views/salon_reservations/new.html.erb</p>
-<%= form_for(salon_salon_reservations_path) do |f| %>
-  <%#= render 'shared/error_messages', object: f.object %>
+<%= form_for([@salon, @reservation]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <div>
     <%= f.label :prefecture %>

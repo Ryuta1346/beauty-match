@@ -1,21 +1,27 @@
 class SalonReservationsController < ApplicationController
-  before_action :set_salon, except: [:index, :new]
+  before_action :authenticate_salon!
+  before_action :set_salon, except: [:index, :new, :create]
+  # before_action :authenticate_salon!, only: [:show,:new]
 
   def index
+    @salon = Salon.find(params[:salon_id])
+    @reservations = @salon.salon_reservations.all
   end
 
   def show
+    @salon_reservation = SalonReservation.find(params[:id])
   end
 
   def new
-    @salon_reservation = @salon.salon_reservations.new
+    @salon = current_salon
+    @reservation = @salon.salon_reservations.new
   end
 
   def create
-    @salon_reservation = @salon.salon_reservations.create!(salon_reservation_params)
-    if @salon_reservation.save
+    @reservation = current_salon.salon_reservations.create!(salon_reservation_params)
+    if @reservation.save
       flash[:success] = "登録に成功しました"
-      redirect_to 'show'
+      redirect_to salon_salon_reservations_url(current_salon)
     else
       flash[:danger] = "登録に失敗しました"
       render 'new'

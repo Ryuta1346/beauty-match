@@ -1,2 +1,6 @@
 <h1>SalonReservations#index</h1>
 <p>Find me in app/views/salon_reservations/index.html.erb</p>
+
+<% @reservations.each.with_index(1) do |r, i| %>
+  <%= i %>:<%= r.prefecture_id %>:<%= r.book_time %><br/>
+<% end %>

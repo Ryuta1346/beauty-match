@@ -59,10 +59,13 @@ Prefecture.create(name: "鹿児島")
 Prefecture.create(name: "沖縄")
 Prefecture.create(name: "None")
 
-Salon::Store.create(category_id:     1,
+Salon.create(category_id:     1,
              prefecture_id:   48,
              name:            "free",
              place:           "None",
+             email:           "test@example.com",
+             password:              "example1",
+             password_confirmation: "example1",
              tel:             "00000000000",
              manage:          "None",
              num_of_stylists: 9999,
@@ -70,16 +73,19 @@ Salon::Store.create(category_id:     1,
              cut_price:       0,
              features:        "None")
 
-Salon::Store.create(category_id:     1,
-             prefecture_id:   13,
-             name:            "Example Salon",
-             place:           "渋谷区道玄坂",
-             tel:             "01000000000",
-             manage:          "Tester",
-             num_of_stylists: 5,
-             num_of_sheets:   8,
-             cut_price:       5890,
-             features:        "カット")
+Salon.create(category_id:           1,
+             prefecture_id:         13,
+             name:                  "Example Salon",
+             place:                 "渋谷区道玄坂",
+             email:                 "test1@example.com",
+             password:              "example",
+             password_confirmation: "example",
+             tel:                   "01000000000",
+             manage:                "Tester",
+             num_of_stylists:       5,
+             num_of_sheets:         8,
+             cut_price:             5890,
+             features:              "カット")
 
 Stylist.create!(salon_id:       1,
                 category_id:    1,

@@ -10,5 +10,9 @@ Email:<%= @salon.email %><br/>
 カット価格:<%= @salon.cut_price %><br/>
 所属スタイリスト数:<%= @salon.num_of_stylists %><br/>
 座席数:<%= @salon.num_of_sheets %>
+<br/>
 
-<%#= link_to "Link", new_salon_reservation_path %>
+<h2>予約一覧</h2>
+<% @reservations.each do |r| %>
+  <%= r.book_time %><br/>
+<% end %>
