@@ -1,5 +1,11 @@
-<h1><%= @salon.name %></h1>
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/salons/sidebar' %>
+</div>
 
-<% @books.each.with_index(1) do |book, i| %>
-  <%= book.salon.name %>:<%= link_to book.book_time, admin_salon_salon_reservation_path(id: book.id) %><br/>
-<% end %>
+<div style="width:84%; border: 1px solid;float: right; margin: auto 0;">
+  <h1><%= current_salon.name %>の予約可能時間一覧</h1>
+
+  <% @books.each.with_index(1) do |book, i| %>
+    <%= book.salon.name %>:<%= link_to book.book_time, admin_salon_salon_reservation_path(id: book.id) %><br/>
+  <% end %>
+</div>

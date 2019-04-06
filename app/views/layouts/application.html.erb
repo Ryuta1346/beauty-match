@@ -9,14 +9,10 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body>
 <header>
-  <nav>
-    <%= link_to 'Users', new_user_session_path %>
-    <%= link_to 'Salon', new_salon_session_path %>
-    <%= link_to 'Stylist', new_stylist_session_path %>
-  </nav>
+  <%= render 'layouts/header' %>
 </header>
+<body>
 <%= render 'shared/flash' %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>

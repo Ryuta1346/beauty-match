@@ -1,14 +1,12 @@
 class Admin::SalonReservationsController < Admin::Base
   before_action :authenticate_salon!
-  before_action :set_salon, except: [:new, :create]
-  # before_action :authenticate_salon!, only: [:show,:new]
 
   def index
-    @books = @salon.salon_reservations.all
+    @books = current_salon.salon_reservations.all
   end
 
   def show
-    @book = @salon.salon_reservations.find(params[:id])
+    @book = current_salon.salon_reservations.find(params[:id])
   end
 
   def new
@@ -40,9 +38,5 @@ class Admin::SalonReservationsController < Admin::Base
 
     def salon_reservation_params
       params.require(:salon_reservation).permit(:prefecture_id, :book_time)
-    end
-
-    def set_salon
-      @salon = Salon.find(params[:salon_id])
     end
 end

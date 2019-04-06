@@ -1,27 +1,23 @@
 class Admin::SalonsController < Admin::Base
-  before_action :set_salon, only: [:show]
-  before_action :authenticate_salon!, only: [:show, :new, :books]
-
-  def index
-    @salons = Salon.all
-  end
+  before_action :authenticate_salon!
 
   def show
-    if current_salon == Salon.find(params[:id])
-      @reservations = @salon.salon_reservations.all
-    else
-      redirect_to root_url
-    end
+    @salon = current_salon
+    @reservations = @salon.salon_reservations.all
   end
 
-  # def books
-  #   @books = current_salon.salon_reservations.all
-  #   @book  = current_salon.salon_reservations.find(params[:salon_id])
-  # end
+  def edit
+    @salon = current_salon
+  end
 
-  private
-
-    def set_salon
-      @salon = Salon.find(params[:id])
+  def update
+    @salon = current_salon.update_attributes
+    if @salon.save
+      flash[:success] = "情報の更新に成功しました"
+      redirect_to admin_salon_url
+    else
+      flash[:danger] = "情報の更新に失敗しました"
+      render edit_admin_salon_path
     end
+  end
 end

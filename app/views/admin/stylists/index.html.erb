@@ -1,0 +1,10 @@
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/salons/sidebar' %>
+</div>
+
+<div style="width:84%; border: 1px solid;float: right; margin: auto 0;">
+  <h1><%= current_salon.name %>所属のスタイリスト一覧</h1>
+  <% @stylists.each.with_index(1) do |s, i| %>
+    <%= i %>:<%= link_to s.name, stylist_path(s) %>
+  <% end %>
+</div>

@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-User.create!(name: "Test User",
-             tel: "08000000000",
-             email: "test_user@example.com",
-             password: "foobar",
+User.create!(name:                  "Test User",
+             tel:                   "08000000000",
+             email:                 "test_user@example.com",
+             password:              "foobar",
              password_confirmation: "foobar",
-             birth_year: "1993")
+             birth_year:            "1993")
 
 Category.create!(name: "Hair_salon")
 
@@ -65,19 +65,19 @@ Prefecture.create(name: "鹿児島")
 Prefecture.create(name: "沖縄")
 Prefecture.create(name: "None")
 
-Salon.create(category_id:     1,
-             prefecture_id:   48,
-             name:            "free",
-             place:           "None",
-             email:           "test@example.com",
+Salon.create(category_id:           1,
+             prefecture_id:         48,
+             name:                  "free",
+             place:                 "None",
+             email:                 "test@example.com",
              password:              "example1",
              password_confirmation: "example1",
-             tel:             "00000000000",
-             manage:          "None",
-             num_of_stylists: 9999,
-             num_of_sheets:   9999,
-             cut_price:       0,
-             features:        "None")
+             tel:                   "00000000000",
+             manage:                "None",
+             num_of_stylists:       9999,
+             num_of_sheets:         9999,
+             cut_price:             0,
+             features:              "None")
 
 Salon.create(category_id:           1,
              prefecture_id:         13,
@@ -93,14 +93,20 @@ Salon.create(category_id:           1,
              cut_price:             5890,
              features:              "カット")
 
-Stylist.create!(salon_id:       1,
-                category_id:    1,
-                name:           "Example Stylist",
-                tel:            "00000000000",
-                email:          "stylisy@example.com",
+Stylist.create!(salon_id:              1,
+                category_id:           1,
+                name:                  "Example Stylist",
+                tel:                   "00000000000",
+                email:                 "stylisy@example.com",
                 password:              "example",
                 password_confirmation: "example",
-                stylist_since:  "2000",
-                activity_scope: "渋谷区",
-                cut_price:      "6980",
-                features:       "カットの再現性")
+                stylist_since:         "2000",
+                activity_scope:        "渋谷区",
+                cut_price:             "6980",
+                features:              "カットの再現性")
+
+10.times do |t|
+  SalonReservation.create!(salon_id:      2,
+                           prefecture_id: 13,
+                           book_time:     "2019-05-#{1 + t} 12:00")
+end
