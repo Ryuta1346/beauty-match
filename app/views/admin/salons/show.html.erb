@@ -13,6 +13,6 @@ Email:<%= @salon.email %><br/>
 <br/>
 aaaaaaaaa
 <h2>予約一覧</h2>
-<% @reservations.each do |r| %>
-  <%= r.book_time %><br/>
+<% @reservations.each.with_index(1) do |r, i| %>
+  <%= i %>: <%= link_to r.book_time, admin_salon_salon_reservation_path(salon_id: r.salon_id, id: r) %><br/>
 <% end %>
