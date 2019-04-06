@@ -1,0 +1,6 @@
+<h1><%= @book.salon.name %>の予約<%= @book.id %></h1>
+
+<%= @book.salon.name %><br/>
+<%= @book.book_time %>
+<br/>
+<%= link_to "予約可能時間一覧", admin_salon_salon_reservations_path %>

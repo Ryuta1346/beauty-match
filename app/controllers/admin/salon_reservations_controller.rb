@@ -1,20 +1,14 @@
-class SalonReservationsController < ApplicationController
+class Admin::SalonReservationsController < Admin::Base
   before_action :authenticate_salon!
-  before_action :set_salon, except: [:index, :new, :create, :books]
+  before_action :set_salon, except: [:new, :create]
   # before_action :authenticate_salon!, only: [:show,:new]
 
   def index
-    @salon = Salon.find(params[:salon_id])
-    @reservations = @salon.salon_reservations.all
-  end
-
-  def books
-    @books = SalonReservation.all
+    @books = @salon.salon_reservations.all
   end
 
   def show
-    @salon = Salon.find(params[:salon_id])
-    @salon_reservation = @salon.salon_reservations.find(params[:id])
+    @book = @salon.salon_reservations.find(params[:id])
   end
 
   def new
