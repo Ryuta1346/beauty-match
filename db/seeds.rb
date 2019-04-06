@@ -7,7 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-User.create!(name: "Test User", tel: "08000000000", email: "test_user@example.com", birth_year: "1993")
+User.create!(name: "Test User",
+             tel: "08000000000",
+             email: "test_user@example.com",
+             password: "foobar",
+             password_confirmation: "foobar",
+             birth_year: "1993")
+
 Category.create!(name: "Hair_salon")
 
 Prefecture.create(name: "北海道")
@@ -92,6 +98,8 @@ Stylist.create!(salon_id:       1,
                 name:           "Example Stylist",
                 tel:            "00000000000",
                 email:          "stylisy@example.com",
+                password:              "example",
+                password_confirmation: "example",
                 stylist_since:  "2000",
                 activity_scope: "渋谷区",
                 cut_price:      "6980",

@@ -5,7 +5,6 @@ class CreateStylists < ActiveRecord::Migration[5.2]
       t.references :category, foreign_key: true
       t.string :name
       t.string :tel
-      t.string :email
       t.integer :stylist_since
       t.string :activity_scope
       t.integer :cut_price

@@ -1,0 +1,16 @@
+<h1>StaticPages#top</h1>
+<h2>サロン一覧</h2>
+<% @salons.each.with_index(1) do |salon| %>
+  <%= salon.category.name %><br/>
+  <%= link_to salon.name, salon %><br/>
+  <%= salon.prefecture.name %><br/>
+  <%= salon.place %><br/>
+  <%= salon.cut_price %><br/>
+  ------<br/>
+<% end %>
+<br/>
+<h2>スタイリスト一覧</h2>
+<% @stylists.each.with_index(1) do |stylist| %>
+  <%= stylist.name %><br/>
+  -------
+<% end %>

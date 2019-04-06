@@ -1,0 +1,8 @@
+<% if stylist_signed_in? %>
+  <strong><%= link_to current_stylist.name, stylist_path(current_stylist.id) %></strong>
+  <%= link_to 'プロフィール変更', edit_stylist_registration_path %>
+  <%= link_to 'ログアウト', destroy_stylist_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'サインアップ', new_stylist_registration_path %>
+  <%= link_to 'ログイン', new_stylist_session_path %>
+<% end %>

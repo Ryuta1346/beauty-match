@@ -1,0 +1,8 @@
+<% if salon_signed_in? %>
+  <strong><%= link_to current_salon.name, salon_path(current_salon.id) %></strong>
+  <%= link_to 'サロン情報変更', edit_salon_registration_path %>
+  <%= link_to 'ログアウト', destroy_salon_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'サインアップ', new_salon_registration_path %>
+  <%= link_to 'ログイン', new_salon_session_path %>
+<% end %>

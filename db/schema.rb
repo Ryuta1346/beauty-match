@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_143309) do
+ActiveRecord::Schema.define(version: 2019_04_06_135220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,24 +66,36 @@ ActiveRecord::Schema.define(version: 2019_04_05_143309) do
     t.bigint "category_id"
     t.string "name"
     t.string "tel"
-    t.string "email"
     t.integer "stylist_since"
     t.string "activity_scope"
     t.integer "cut_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "features"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["category_id"], name: "index_stylists_on_category_id"
+    t.index ["email"], name: "index_stylists_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true
     t.index ["salon_id"], name: "index_stylists_on_salon_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "tel"
-    t.string "email"
     t.integer "birth_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "salon_reservations", "prefectures"
