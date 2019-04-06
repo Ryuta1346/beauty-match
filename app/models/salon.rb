@@ -4,6 +4,7 @@ class Salon < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :salon_reservations
+  has_many :stylists
   belongs_to :category
   belongs_to :prefecture
 

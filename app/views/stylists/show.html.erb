@@ -1,5 +1,6 @@
 <h1>Stylists#show</h1>
 名前:<%= @stylist.name %><br/>
+所属:<%= link_to @stylist.salon_id, salon_path(@stylist.salon_id) %><br/>
 Email:<%= @stylist.email %><br/>
 強み:<%= @stylist.features %><br/>
 スタイリスト歴:<%= @stylist.stylist_since %><br/>

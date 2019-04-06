@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :salons do
     resources :salon_reservations
-    resources :stylists
+    get '/member', to: 'stylists#member'
   end
 
   resources :stylists

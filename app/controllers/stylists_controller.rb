@@ -3,6 +3,11 @@ class StylistsController < ApplicationController
     @stylists = Stylist.all
   end
 
+  def member
+    @salon = Salon.find(params[:salon_id])
+    @stylists = @salon.stylists.all
+  end
+
   def show
     @stylist = Stylist.find(params[:id])
   end
