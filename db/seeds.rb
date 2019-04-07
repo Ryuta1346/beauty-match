@@ -107,6 +107,5 @@ Stylist.create!(salon_id:              1,
 
 10.times do |t|
   SalonReservation.create!(salon_id:      2,
-                           prefecture_id: 13,
                            book_time:     "2019-05-#{1 + t} 12:00")
 end

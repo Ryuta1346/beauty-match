@@ -1,0 +1,7 @@
+<%= form_for(@reservation, url: admin_salon_salon_reservations_path) do |f| %>
+  <div class="field">
+    <%= f.label :book_time %>
+    <%= f.datetime_select :book_time, minute_step: 15 %>
+  </div>
+  <%= f.submit '登録' %>
+<% end %>

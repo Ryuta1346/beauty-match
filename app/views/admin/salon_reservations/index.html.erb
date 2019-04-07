@@ -5,7 +5,12 @@
 <div style="width:84%; border: 1px solid;float: right; margin: auto 0;">
   <h1><%= current_salon.name %>の予約可能時間一覧</h1>
 
+  <h2>予約可能時間を登録する</h2>
+  <%= render 'admin/salon_reservations/book_new' %>
+
+
+  <h2>予約可能時間一覧</h2>
   <% @books.each.with_index(1) do |book, i| %>
-    <%= book.salon.name %>:<%= link_to book.book_time, admin_salon_salon_reservation_path(id: book.id) %><br/>
+    <%= i %>.<%= book.salon.place %>:<%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_salon_salon_reservation_path(id: book.id) %><br/>
   <% end %>
 </div>

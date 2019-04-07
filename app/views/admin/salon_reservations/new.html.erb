@@ -1,0 +1,15 @@
+<%= form_for(@salon_reservation) do |f| %>
+  <div class="field">
+    <div>
+      <%= f.label :prefecture_id %>
+      <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+    </div>
+
+    <%= f.label :book_time %>
+    <%= f.datetime_field :book_time %>
+  </div>
+  <%= f.submit '登録' %>
+<% end %>
+
+
+aaaaaaa
