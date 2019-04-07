@@ -1,10 +1,9 @@
 class Admin::StylistsController < Admin::Base
-  before_action :authenticate_stylist!
-  # before_action :authenticate_salon!, only: [:index]
-
+  before_action :authenticate_stylist!, except: [:index]
+  before_action :authenticate_salon!, only: [:index]
 
   def index
-    @stylists = current_stylists.salons.all
+    @stylists = current_salon.stylists.all
   end
 
   def member

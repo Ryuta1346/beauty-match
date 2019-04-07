@@ -1,0 +1,10 @@
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/salons/sidebar' %>
+</div>
+
+<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;padding-bottom: 30px;">
+  <h2><%= current_salon.name %>所属スタイリスト</h2>
+  <% @stylists.each.with_index(1) do |s, i| %>
+    <%= i %>.<%= s.name %>
+  <% end %>
+</div>
