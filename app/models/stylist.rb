@@ -6,6 +6,7 @@ class Stylist < ApplicationRecord
   belongs_to :category
   belongs_to :salon
   has_many :menus
+  has_many :stylist_reservations
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :tel, presence: true, length: { maximum: 11, minimum: 11 }, uniqueness: true

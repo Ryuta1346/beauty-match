@@ -1,0 +1,17 @@
+<h1>StylistReservations#show</h1>
+スタイリスト名:<%= link_to @stylist_reservation.stylist.name, stylist_path(@stylist_reservation.stylist.id) %><br/>
+予約可能時間:<%= @stylist_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
+施術時間:<%= @stylist_reservation.operation_time %>分<br/>
+備考:<%= @stylist_reservation.memo %>
+<br/>
+
+<% @stylist_reservation.stylist.menus.each do |m| %>
+  <div style="width:30%; border: 1px solid; padding: 10px; border-radius: 10px;margin: 10px">
+    メニュー名:<%= m.menu_name %><br/>
+    価格:<%= m.menu_price %>円<br/>
+    施術時間:<%= m.operation_time %>分<br/>
+    内容:<%= m.content %><br/>
+    備考:<%= m.memo %>
+  </div>
+<% end %>
+<%= link_to '戻る', :back %>

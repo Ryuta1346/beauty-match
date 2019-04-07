@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stylist_reservations/index'
+  get 'stylist_reservations/show'
   root 'static_pages#top'
   get '/about', to: 'static_pages#about'
   get '/help', to: 'static_pages#help'
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :stylist do
       resources :menus
+      resources :stylist_reservations
     end
     resource :salon do
       resources :salon_reservations
@@ -37,6 +40,7 @@ Rails.application.routes.draw do
   resources :stylists, only:[:index, :show]
   resources :users
   resources :categories, only: [:index, :show]
+  resources :stylist_reservations, only: [:show, :index]
 
   get '/books', to: 'salon_reservations#books'
 

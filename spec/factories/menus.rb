@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :menu do
-    stylist { nil }
+    association :stylist
     menu_name { "MyString" }
     menu_price { 1 }
     operation_time { 1 }

@@ -5,12 +5,11 @@
   <%= link_to salon.name, salon %><br/>
   <%= salon.prefecture.name %><br/>
   <%= salon.place %><br/>
-  <%= salon.cut_price %><br/>
+  <%= salon.cut_price %>円<br/>
   ------<br/>
 <% end %>
 <br/>
 <h2>スタイリスト一覧</h2>
 <% @stylists.each.with_index(1) do |stylist,i| %>
   <%= i %>:<%= link_to stylist.name, stylist %><br/>
-  -------
 <% end %>

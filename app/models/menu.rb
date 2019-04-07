@@ -1,5 +1,6 @@
 class Menu < ApplicationRecord
   belongs_to :stylist
+  has_many :stylist_reservations
 
   validates :menu_name, presence: true, length: { maximum: 30 }
   validates :menu_price, presence: true, length: { maximum: 5 }

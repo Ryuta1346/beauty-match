@@ -1,0 +1,28 @@
+<h1>StylistReservations#index</h1>
+<h3>予約可能時間一覧</h3>
+<div style="padding-top: 50px; margin-bottom: 50px">
+  <table style="text-align: center; margin: auto; border: 5px solid #1a1a1a;width: 70%">
+    <caption>スタイリストの予約可能時間一覧</caption>
+    <thead>
+    <tr>
+      <th>スタイリスト名</th>
+      <th>予約可能日時</th>
+      <th>施術可能時間</th>
+      <th>備考</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @books.each do |b| %>
+      <tr>
+        <td><%= link_to b.stylist.name, stylist_path(id: b.stylist.id) %></td>
+        <td><%= link_to b.book_time.strftime('%Y年%m月%d日 %H:%M'), stylist_reservation_path(b) %></td>
+        <td><%= b.operation_time %>分</td>
+        <td><%= b.memo %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to '戻る', :back %>

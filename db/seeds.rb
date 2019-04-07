@@ -95,25 +95,77 @@ Salon.create(category_id:           1,
 
 Stylist.create!(salon_id:              1,
                 category_id:           1,
-                name:                  "Example Stylist",
+                name:                  "西野　七瀬",
                 tel:                   "00000000000",
-                email:                 "stylist@example.com",
+                email:                 "stylist1@example.com",
                 password:              "example",
                 password_confirmation: "example",
-                stylist_since:         "2000",
+                stylist_since:         "2015",
                 activity_scope:        "渋谷区",
-                cut_price:             "6980",
-                features:              "カットの再現性")
+                cut_price:             6980,
+                features:              "ショート〜ボブのカット")
 
-Menu.create!(stylist_id: 1,
-             menu_name: "カット+シャンプー",
-             menu_price: 6890,
+Stylist.create!(salon_id:              2,
+                category_id:           1,
+                name:                  "白石　麻衣",
+                tel:                   "01000000000",
+                email:                 "stylist2@example.com",
+                password:              "example",
+                password_confirmation: "example",
+                stylist_since:         "2014",
+                activity_scope:        "港区",
+                cut_price:             7980,
+                features:              "ロングヘアーのカット〜ケア")
+
+Menu.create!(stylist_id:     1,
+              menu_name:      "カット+シャンプー",
+              menu_price:     6980,
+              operation_time: 50,
+              content:        "カット、シャンプー、ブロー",
+              memo:           "時間内であれば軽めのセットまで可能です"
+)
+
+Menu.create!(stylist_id:     1,
+             menu_name:      "カット+カラー",
+             menu_price:     12980,
+             operation_time: 120,
+             content:        "カット、シャンプー、ブロー、カラー",
+             memo:           "時間内であれば軽めのセットまで可能です"
+)
+
+Menu.create!(stylist_id:     2,
+             menu_name:      "カット+シャンプー",
+             menu_price:     7980,
              operation_time: 60,
-             content: "カット、シャンプー、ブロー",
-             memo: "時間内であれば軽めのセットまで可能です"
-             )
+             content:        "カット、シャンプー、ブロー",
+             memo:           "時間内であれば軽めのセットまで可能です"
+)
+
+Menu.create!(stylist_id:     2,
+             menu_name:      "カット+カラー",
+             menu_price:     13890,
+             operation_time: 140,
+             content:        "カット、シャンプー、ブロー、カラー",
+             memo:           "時間内であれば軽めのセットまで可能です"
+)
 
 10.times do |t|
-  SalonReservation.create!(salon_id:      2,
-                           book_time:     "2019-05-#{1 + t} 12:00")
+  SalonReservation.create!(salon_id:  2,
+                           book_time: "2019-05-#{1 + t} 12:00")
+end
+
+10.times do |t|
+  StylistReservation.create!(stylist_id: 1,
+                             menu_id:    1,
+                             book_time:  "2019-06-#{1 + t} 12:00",
+                             operation_time: 50,
+                             memo:       "時間内なら施術後のセットまでOK")
+end
+
+10.times do |t|
+  StylistReservation.create!(stylist_id: 2,
+                             menu_id:    1,
+                             book_time:  "2019-06-#{1 + t} 13:00",
+                             operation_time: 60,
+                             memo:       "時間内なら施術後のセットまでOK")
 end

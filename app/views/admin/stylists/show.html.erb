@@ -10,4 +10,12 @@
   強み:<%= current_stylist.features %><br/>
   スタイリスト歴:<%= Date.today.year - current_stylist.stylist_since %>年<br/>
   カット価格:<%= current_stylist.cut_price %>円
+  <br/>
+  <%= link_to 'Edit', edit_admin_stylist_path %>
+  <%= link_to 'Delete', admin_stylist_path, method: :delete, data: { confirm: "You sure?" } %>
+  <%= link_to 'Logout', destroy_stylist_session_path, method: :delete %>
+  <h3>予約一覧</h3>
+  <% @stylist_reservations.each.with_index(1) do |r, i| %>
+    <%= i %>: <%= link_to r.book_time, admin_stylist_stylist_reservation_path(id: r) %><br/>
+  <% end %>
 </div>
