@@ -1,19 +1,17 @@
 class Admin::StylistsController < Admin::Base
+  before_action :authenticate_stylist!
+
   def index
     @stylists = Stylist.all
   end
 
   def member
-    @salon = Salon.find(params[:salon_id])
+    @salon    = Salon.find(params[:salon_id])
     @stylists = @salon.stylists.all
   end
 
   def show
-    if current_stylist == Stylist.find(params[:id])
-      @stylist = current_stylist
-    else
-      redirect_to root_url
-    end
+    @stylist = current_stylist
   end
 
   def new
@@ -35,6 +33,7 @@ class Admin::StylistsController < Admin::Base
   end
 
   private
+
     def stylist_params
       params.require(:stylist).permit(:category_id, :salon_id, :name, :tel, :email, :stylist_since, :activity_scope, :cut_price, :features)
     end

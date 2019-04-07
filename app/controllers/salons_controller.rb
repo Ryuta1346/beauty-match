@@ -1,5 +1,5 @@
 class SalonsController < ApplicationController
-  before_action :set_salon, only: [:show]
+  before_action :set_salon, only: [:show, :destroy]
 
   def index
     @salons = Salon.all
@@ -7,6 +7,9 @@ class SalonsController < ApplicationController
 
   def show
     @reservations = @salon.salon_reservations.all
+  end
+
+  def destroy
   end
 
   private

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :stylists
+    resource :stylist
     resource :salon do
       resources :salon_reservations
       resources :stylists

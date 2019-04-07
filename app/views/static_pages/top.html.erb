@@ -10,7 +10,7 @@
 <% end %>
 <br/>
 <h2>スタイリスト一覧</h2>
-<% @stylists.each.with_index(1) do |stylist| %>
-  <%= stylist.name %><br/>
+<% @stylists.each.with_index(1) do |stylist,i| %>
+  <%= i %>:<%= link_to stylist.name, stylist %><br/>
   -------
 <% end %>

@@ -1,3 +1,4 @@
 <h1>Salons#index</h1>
-<p>Find me in app/views/salons/index.html.erb</p>
-
+<% @salons.each.with_index(1) do |s, i| %>
+  <%= i %>:<%= s.name %><br/>
+<% end %>

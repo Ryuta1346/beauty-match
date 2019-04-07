@@ -17,7 +17,8 @@
   座席数:<%= @salon.num_of_sheets %>
   <br/>
   <%= link_to 'Edit', edit_admin_salon_path %>
-  <%= link_to 'Delete',  admin_salon_path, method: :delete, data: {confirm: "You sure?"} %>
+  <%= link_to 'Delete', admin_salon_path, method: :delete, data: { confirm: "You sure?" } %>
+  <%= link_to 'Logout', destroy_salon_session_path, method: :delete %>
   <h2>予約一覧</h2>
   <% @reservations.each.with_index(1) do |r, i| %>
     <%= i %>: <%= link_to r.book_time, admin_salon_salon_reservation_path(id: r) %><br/>

@@ -2,7 +2,7 @@ class SalonReservationsController < ApplicationController
   before_action :set_salon, except: [:books]
 
   def index
-    @reservations = @salon.salon_reservations.all
+    @reservations = SalonReservation.all
   end
 
   def books
