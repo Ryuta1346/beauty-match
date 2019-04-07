@@ -3,8 +3,9 @@ class Stylist < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :salon
   belongs_to :category
+  belongs_to :salon
+  has_many :menus
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :tel, presence: true, length: { maximum: 11, minimum: 11 }, uniqueness: true

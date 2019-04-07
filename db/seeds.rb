@@ -97,13 +97,21 @@ Stylist.create!(salon_id:              1,
                 category_id:           1,
                 name:                  "Example Stylist",
                 tel:                   "00000000000",
-                email:                 "stylisy@example.com",
+                email:                 "stylist@example.com",
                 password:              "example",
                 password_confirmation: "example",
                 stylist_since:         "2000",
                 activity_scope:        "渋谷区",
                 cut_price:             "6980",
                 features:              "カットの再現性")
+
+Menu.create!(stylist_id: 1,
+             menu_name: "カット+シャンプー",
+             menu_price: 6890,
+             operation_time: 60,
+             content: "カット、シャンプー、ブロー",
+             memo: "時間内であれば軽めのセットまで可能です"
+             )
 
 10.times do |t|
   SalonReservation.create!(salon_id:      2,
