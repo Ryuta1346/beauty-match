@@ -1,7 +1,16 @@
-<h2><%= current_stylist.name %></h2>
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/stylists/sidebar' %>
+</div>
 
-メニュー名:<%= @menu.menu_name %><br/>
-価格:<%= @menu.menu_price %>円<br/>
-施術時間:<%= @menu.operation_time %>分<br/>
-内容:<%= @menu.content %><br/>
-備考:<%= @menu.memo %>
+<div style="width:80%; border: 1px solid;float: right; margin: auto 0; padding: 10px">
+  <h2><%= current_stylist.name %></h2>
+
+  <h3>メニュー一覧</h3>
+  <div style="width: 40%; margin: 5%; border: 1px solid; border-radius: 10px; padding: 10px">
+    メニュー名:<%= @menu.menu_name %><br/>
+    価格:<%= @menu.menu_price %>円<br/>
+    施術時間:<%= @menu.operation_time %>分<br/>
+    内容:<%= @menu.content %><br/>
+    備考:<%= @menu.memo %>
+  </div>
+</div>

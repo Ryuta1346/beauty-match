@@ -1,5 +1,11 @@
-<h2><%= current_stylist.name %></h2>
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/stylists/sidebar' %>
+</div>
 
-<% @menus.each.with_index(1) do |m, i| %>
-  <%= i %>:<%= m.menu_name %><br/>
-<% end %>
+<div style="width:80%; border: 1px solid;float: right; margin: auto 0; padding: 10px">
+  <h2><%= current_stylist.name %></h2>
+
+  <% @menus.each.with_index(1) do |m, i| %>
+    <%= i %>:<%= m.menu_name %><br/>
+  <% end %>
+</div>
