@@ -6,9 +6,9 @@ class Admin::SalonsController < Admin::Base
     @reservations = @salon.salon_reservations.all
   end
 
-  # def edit
-  #   @salon = current_salon
-  # end
+  def edit
+    @salon = current_salon
+  end
 
   def update
     @salon = current_salon.salon_reservations

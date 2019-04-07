@@ -11,6 +11,8 @@
     価格:<%= @menu.menu_price %>円<br/>
     施術時間:<%= @menu.operation_time %>分<br/>
     内容:<%= @menu.content %><br/>
-    備考:<%= @menu.memo %>
+    備考:<%= @menu.memo %><br/>
+    <%= link_to 'Edit', edit_admin_stylist_menu_path %>
+    <%= link_to 'Delete',  admin_stylist_menu_path, method: :delete, data: { confirm: 'Are you sure?' }%>
   </div>
 </div>

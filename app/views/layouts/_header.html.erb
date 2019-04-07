@@ -1,9 +1,14 @@
 <nav>
   <%= link_to "Home", root_path %>
-  <%= link_to 'Users', new_user_session_path %>
-  <%= link_to 'Salon', new_salon_session_path %>
-  <%= link_to 'Stylist', new_stylist_session_path %>
-  <%# if salon_signed_in? || stylist_signed_in? || user_signed_in? %>
-    <%#= current_salon.name || current_stylist.name || current_user.name %>
-  <%# end %>
+  <% if salon_signed_in? %>
+    <%= link_to current_salon.name, admin_salon_path %>
+  <% elsif stylist_signed_in? %>
+    <%= link_to current_stylist.name, admin_stylist_path %>
+  <% elsif user_signed_in? %>
+    <%= link_to current_user.name, admin_user_path %>
+  <% else %>
+    <%= link_to 'Users', new_user_session_path %>
+    <%= link_to 'Salon', new_salon_session_path %>
+    <%= link_to 'Stylist', new_stylist_session_path %>
+  <% end %>
 </nav>

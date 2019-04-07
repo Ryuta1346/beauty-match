@@ -2,12 +2,11 @@
   <%= render 'admin/salons/sidebar' %>
 </div>
 
-<div style="width:84%; border: 1px solid;float: right; margin: auto 0;">
+<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
   <h2>Edit <%= @salon.name %></h2>
 
   <%= form_for(@salon) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-
 
     <div class="field">
       <%= f.label :email %><br />

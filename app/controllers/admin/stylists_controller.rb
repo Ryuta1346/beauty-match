@@ -1,5 +1,5 @@
 class Admin::StylistsController < Admin::Base
-  before_action :authenticate_stylist!
+  before_action :authenticate_stylist!, except: [:index]
 
   def index
     @stylists = Stylist.all
@@ -19,7 +19,7 @@ class Admin::StylistsController < Admin::Base
   end
 
   def create
-    @stylist = Stylist.create(stylist_params)
+    @stylist = current_stylist.create(stylist_params)
     if @stylist.save
       flash[:success] = "スタイリストを登録しました"
       redirect_to stylist_url(@stylist)
@@ -30,6 +30,18 @@ class Admin::StylistsController < Admin::Base
   end
 
   def edit
+    @stylist = current_stylist
+  end
+
+  def update
+    @stylist = current_stylist
+    if @stylist.update_attributes!(stylist_params)
+      flash[:success] = "スタイリスト情報を変更しました"
+      redirect_to admin_stylist_url
+    else
+      flash[:danger] = "スタイリスト情報の変更に失敗しました"
+      render_to edit_admin_salon_stylist_path
+    end
   end
 
   private

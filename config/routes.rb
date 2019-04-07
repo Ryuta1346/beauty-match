@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'menus/index'
-  get 'menus/show'
   root 'static_pages#top'
   get '/about', to: 'static_pages#about'
   get '/help', to: 'static_pages#help'
@@ -25,10 +23,9 @@ Rails.application.routes.draw do
     resource :stylist do
       resources :menus
     end
-
     resource :salon do
       resources :salon_reservations
-      resources :stylists
+      resources :stylists, only:[:show, :index]
     end
   end
 
@@ -37,7 +34,7 @@ Rails.application.routes.draw do
     get '/member', to: 'stylists#member'
   end
 
-  resources :stylists
+  resources :stylists, only:[:index, :show]
   resources :users
   resources :categories, only: [:index, :show]
 

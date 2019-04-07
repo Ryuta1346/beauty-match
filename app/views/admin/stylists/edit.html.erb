@@ -1,0 +1,69 @@
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/stylists/sidebar' %>
+</div>
+
+<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
+  <h2>Edit <%= @stylist.name %></h2>
+
+  <%= form_for(@stylist, url: admin_stylist_path) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="field">
+      <%= f.label :email %><br/>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @minimum_password_length %>
+        <br/>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br/>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :salon %>
+      <%= f.collection_select :salon_id, Salon.all, :id, :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tel %>
+      <%= f.telephone_field :tel %>
+    </div>
+
+    <div class="field">
+      <%= f.label :stylist_since %>
+      <%= f.number_field :stylist_since, min: 1960 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :activity_scope %>
+      <%= f.text_field :activity_scope %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cut_price %>
+      <%= f.number_field :cut_price %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+
+  <h3>Delete my account</h3>
+  <p><%= button_to "Delete Stylist", admin_stylist_path, data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+  <%= link_to "Back", admin_stylist_path %>
+</div>

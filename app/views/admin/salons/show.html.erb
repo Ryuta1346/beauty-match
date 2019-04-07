@@ -2,8 +2,8 @@
   <%= render 'admin/salons/sidebar' %>
 </div>
 
-<div style="width:84%; border: 1px solid;float: right; margin: auto 0;">
-  <h1><%= @salon.name %></h1>
+<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
+  <h2><%= @salon.name %></h2>
   カテゴリー:<%= @salon.category.name %><br/>
   サロン名:<%= @salon.name %><br/>
   都道府県:<%= @salon.prefecture.name %><br/>
@@ -19,7 +19,7 @@
   <%= link_to 'Edit', edit_admin_salon_path %>
   <%= link_to 'Delete', admin_salon_path, method: :delete, data: { confirm: "You sure?" } %>
   <%= link_to 'Logout', destroy_salon_session_path, method: :delete %>
-  <h2>予約一覧</h2>
+  <h3>予約一覧</h3>
   <% @reservations.each.with_index(1) do |r, i| %>
     <%= i %>: <%= link_to r.book_time, admin_salon_salon_reservation_path(id: r) %><br/>
   <% end %>
