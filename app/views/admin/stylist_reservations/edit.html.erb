@@ -1,4 +1,4 @@
-<%= form_for(@reservation) do |f| %>
+<%= form_for(@stylist_reservation, url: admin_stylist_stylist_reservation_path) do |f| %>
   <div>
     <%= f.label :Menu %>
     <%= f.collection_select :menu_id, current_stylist.menus.all, :id, :menu_name %>

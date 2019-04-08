@@ -156,7 +156,6 @@ end
 
 10.times do |t|
   StylistReservation.create!(stylist_id: 1,
-                             menu_id:    1,
                              book_time:  "2019-06-#{1 + t} 12:00",
                              operation_time: 50,
                              memo:       "時間内なら施術後のセットまでOK")
@@ -164,7 +163,6 @@ end
 
 10.times do |t|
   StylistReservation.create!(stylist_id: 2,
-                             menu_id:    1,
                              book_time:  "2019-06-#{1 + t} 13:00",
                              operation_time: 60,
                              memo:       "時間内なら施術後のセットまでOK")

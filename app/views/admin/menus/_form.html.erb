@@ -1,19 +1,19 @@
 <%= form_for(@menu, url: admin_stylist_menus_path) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :menu_name %>
+  <%= f.label :メニュー名 %><br/>
   <%= f.text_field :menu_name %>
   <br/>
-  <%= f.label :menu_price %>
-  <%= f.number_field :menu_price %>
+  <%= f.label :価格 %><br/>
+  <%= f.number_field :menu_price, step: 10 %>円
   <br/>
-  <%= f.label :operation_time %>
-  <%= f.number_field :operation_time %>
+  <%= f.label :時間 %><br/>
+  <%= f.number_field :operation_time %>分
   <br/>
-  <%= f.label :content %>
+  <%= f.label :内容 %><br/>
   <%= f.text_field :content %>
   <br/>
-  <%= f.label :memo %><br/>
+  <%= f.label :備考 %><br/>
   <%= f.text_area :memo %>
   <br/>
   <%= f.submit "登録" %>

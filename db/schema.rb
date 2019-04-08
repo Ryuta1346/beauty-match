@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_07_140131) do
+ActiveRecord::Schema.define(version: 2019_04_08_142406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,13 +73,11 @@ ActiveRecord::Schema.define(version: 2019_04_07_140131) do
 
   create_table "stylist_reservations", force: :cascade do |t|
     t.bigint "stylist_id"
-    t.bigint "menu_id"
     t.datetime "book_time"
     t.string "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "operation_time"
-    t.index ["menu_id"], name: "index_stylist_reservations_on_menu_id"
     t.index ["stylist_id"], name: "index_stylist_reservations_on_stylist_id"
   end
 
@@ -124,7 +122,6 @@ ActiveRecord::Schema.define(version: 2019_04_07_140131) do
   add_foreign_key "salon_reservations", "salons"
   add_foreign_key "salons", "categories"
   add_foreign_key "salons", "prefectures"
-  add_foreign_key "stylist_reservations", "menus"
   add_foreign_key "stylist_reservations", "stylists"
   add_foreign_key "stylists", "categories"
   add_foreign_key "stylists", "salons"

@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="field">
-    <%= f.label :book_time %>
+    <%= f.label :時間 %>
     <%= f.datetime_select :book_time, minute_step: 15 %>
   </div>
   <%= f.submit '登録' %>
