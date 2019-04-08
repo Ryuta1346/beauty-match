@@ -1,0 +1,28 @@
+<%= form_for(@reservation) do |f| %>
+  <div>
+    <%= f.label :Menu %>
+    <%= f.collection_select :menu_id, current_stylist.menus.all, :id, :menu_name %>
+  </div>
+
+  <div>
+    <%= f.label :book_time %>
+    <%= f.datetime_select :book_time, minute_step: 5 %>
+  </div>
+
+  <div>
+    <%= f.label :operation_time %>
+    <%= f.number_field :operation_time, min: 0, step: 5 %>
+  </div>
+
+  <div>
+    <%= f.label :memo %>
+    <%= f.text_field :memo %>
+  </div>
+
+  <div>
+    <%= f.submit '編集' %>
+  </div>
+<% end %>
+<br/>
+<%= link_to '予約可能時間一覧へ', admin_stylist_stylist_reservations_path %><br/>
+<%= link_to '戻る', :back %>

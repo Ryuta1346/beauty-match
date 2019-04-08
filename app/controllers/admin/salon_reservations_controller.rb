@@ -16,7 +16,7 @@ class Admin::SalonReservationsController < Admin::Base
   end
 
   def create
-    @reservation = current_salon.salon_reservations.build(salon_reservation_params)
+    @reservation = current_salon.salon_reservations.create(salon_reservation_params)
     if @reservation.save
       flash[:success] = "登録に成功しました"
       redirect_to admin_salon_salon_reservations_url

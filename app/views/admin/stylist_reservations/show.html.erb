@@ -7,4 +7,9 @@
   予約可能時間:<%= @stylist_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
   施術可能時間<%= @stylist_reservation.operation_time %>分<br/>
   備考:<%= @stylist_reservation.memo %><br/>
+
+  <br/>
+  <%= link_to '編集',  edit_admin_stylist_stylist_reservation_path %><br/>
+  <%= link_to '削除', admin_stylist_stylist_reservation_path, method: :delete %><br/>
+  <%= link_to "予約可能時間一覧へ",  admin_stylist_stylist_reservations_path %>
 </div>

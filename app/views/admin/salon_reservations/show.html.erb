@@ -3,4 +3,7 @@
 <%= @book.salon.name %><br/>
 <%= @book.book_time %>
 <br/>
-<%= link_to "予約可能時間一覧", admin_salon_salon_reservations_path %>
+
+<%= link_to '編集',  edit_admin_salon_salon_reservation_path %><br/>
+<%= link_to '削除', salon_salon_reservation_path, method: :delete %>
+<%= link_to "予約可能時間一覧へ", admin_salon_salon_reservations_path %>

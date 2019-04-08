@@ -12,10 +12,6 @@ class StylistsController < ApplicationController
     @stylist = Stylist.find(params[:id])
   end
 
-  def new
-    @stylist = Stylist.new
-  end
-
   def create
     @stylist = Stylist.create(stylist_params)
     if @stylist.save
