@@ -5,79 +5,76 @@
 <div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
   <h2>Edit <%= @salon.name %></h2>
 
-  <%= form_for(@salon) do |f| %>
+  <%= form_for(@salon, url: admin_salon_path) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label :email %><br/>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
       <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @minimum_password_length %>
+        <br/>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :password_confirmation %><br/>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :category %>
       <%= f.collection_select :category_id, Category.all, :id, :name %>
     </div>
-    <div>
+
+    <div class="field">
       <%= f.label :name %>
       <%= f.text_field :name %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :prefecture %>
       <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :place %>
-      <%= f.text_field :place%>
+      <%= f.text_field :place %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :manage %>
       <%= f.text_field :manage %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :tel %>
-      <%= f.text_field :tel %>
+      <%= f.telephone_field :tel %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :features %>
       <%= f.text_field :features %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :cut_price %>
       <%= f.number_field :cut_price %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :num_of_stylists %>
       <%= f.number_field :num_of_stylists %>
     </div>
 
-    <div>
+    <div class="field">
       <%= f.label :num_of_sheets %>
       <%= f.number_field :num_of_sheets %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
 
     <div class="actions">

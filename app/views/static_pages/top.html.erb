@@ -1,15 +1,11 @@
-<h1>StaticPages#top</h1>
-<h2>サロン一覧</h2>
-<% @salons.each.with_index(1) do |salon| %>
-  <%= salon.category.name %><br/>
-  <%= link_to salon.name, salon %><br/>
-  <%= salon.prefecture.name %><br/>
-  <%= salon.place %><br/>
-  <%= salon.cut_price %>円<br/>
-  ------<br/>
-<% end %>
-<br/>
-<h2>スタイリスト一覧</h2>
-<% @stylists.each.with_index(1) do |stylist,i| %>
-  <%= i %>:<%= link_to stylist.name, stylist %><br/>
-<% end %>
+<%= render 'layouts/user_top' %>
+<%= render 'layouts/top_one' %>
+<%= render 'layouts/top_two' %>
+<%= render 'layouts/top_three' %>
+<%= render 'layouts/top_four' %>
+<%= render 'layouts/top_five' %>
+<%= render 'layouts/top_six' %>
+
+<div style="margin: 40px; text-align: right;">
+  <%= link_to '予約可能なサロン/スタイリスト一覧を見る', reservations_path %>
+</div>

@@ -2,7 +2,7 @@ class Admin::StylistReservationsController < Admin::Base
   before_action :authenticate_stylist!
 
   def index
-    @books       = current_stylist.stylist_reservations.all
+    @books       = current_stylist.stylist_reservations.where("stylist_reservations.book_time > ?", DateTime.now).all
     @reservation = current_stylist.stylist_reservations.build
   end
 

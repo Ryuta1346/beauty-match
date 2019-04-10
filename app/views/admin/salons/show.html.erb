@@ -20,7 +20,7 @@
   <%= link_to 'Delete', admin_salon_path, method: :delete, data: { confirm: "You sure?" } %>
   <%= link_to 'Logout', destroy_salon_session_path, method: :delete %>
   <h3>予約一覧</h3>
-  <% @reservations.each.with_index(1) do |r, i| %>
-    <%= i %>: <%= link_to r.book_time, admin_salon_salon_reservation_path(id: r) %><br/>
+  <% @books.each do |b| %>
+    <%= b.stylist_reservation.stylist.name %>:<%= b.stylist_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
   <% end %>
 </div>

@@ -11,6 +11,9 @@
 
   <h3>予約可能時間一覧</h3>
   <% @books.each.with_index(1) do |book, i| %>
-    <%= i %>.<%= book.salon.place %>:<%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_salon_salon_reservation_path(id: book.id) %><br/>
+    <%= i %>.<%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_salon_salon_reservation_path(id: book.id) %>
+    <%= link_to '編集',  edit_admin_salon_salon_reservation_path(book) %>
+    <%= link_to '削除',  admin_salon_salon_reservation_path(book), method: :delete %>
+    <br/>
   <% end %>
 </div>

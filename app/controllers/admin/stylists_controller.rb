@@ -39,6 +39,7 @@ class Admin::StylistsController < Admin::Base
     @stylist = current_stylist
     if @stylist.update_attributes!(stylist_params)
       flash[:success] = "スタイリスト情報を変更しました"
+      sign_in(@stylist, bypass: true) if current_stylist.id == @stylist.id
       redirect_to admin_stylist_url
     else
       flash[:danger] = "スタイリスト情報の変更に失敗しました"

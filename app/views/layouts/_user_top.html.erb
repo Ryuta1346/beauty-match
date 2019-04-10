@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
+  <%= link_to 'アカウント削除', user_registration_path, method: :delete, data: { confirm: "You sure?" } %>
+<% end %>

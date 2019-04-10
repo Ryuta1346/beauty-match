@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:index, :create, :new]
-
   def index
     @users = User.all
   end
 
   def show
+    if current_user == User.find(params[:id])
+      @user = current_user
+    else
+      redirect_to root_url
+    end
   end
 
   def new
@@ -24,15 +27,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
-    if @user.update_attributes(user_params)
+    @user = current_user
+    if @user.update_attributes!(user_params)
       flash[:success] = "ユーザー情報の更新に成功しました"
-      redirect_to 'show'
+      redirect_to user_path
     else
       flash[:danger] = "ユーザー情報の更新に失敗しました"
-      render 'edit'
+      render edit_user_path
     end
   end
 

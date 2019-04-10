@@ -2,5 +2,5 @@
 <p>Find me in app/views/salon_reservations/index.html.erb</p>
 
 <% @reservations.each.with_index(1) do |r, i| %>
-  <%= i %>:<%= r.prefecture_id %>:<%= r.book_time %><br/>
+  <%= i %>:<%= r.prefecture_id %>:<%= r.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
 <% end %>

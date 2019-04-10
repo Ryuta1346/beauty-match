@@ -7,12 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-User.create!(name:                  "Test User",
+User.create!(name:                  "霜降り明星　せいや",
              tel:                   "08000000000",
-             email:                 "test_user@example.com",
+             email:                 "test_user1@example.com",
              password:              "foobar",
              password_confirmation: "foobar",
-             birth_year:            "1993")
+             birth_year:            "1994")
+
+User.create!(name:                  "霜降り明星　粗品",
+             tel:                   "02000000000",
+             email:                 "test_user2@example.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             birth_year:            "1994")
 
 Category.create!(name: "Hair_salon")
 
@@ -93,6 +100,34 @@ Salon.create(category_id:           1,
              cut_price:             5890,
              features:              "カット")
 
+Salon.create(category_id:           1,
+             prefecture_id:         13,
+             name:                  "六本木 Salon",
+             place:                 "港区六本木6丁目",
+             email:                 "test3@example.com",
+             password:              "example",
+             password_confirmation: "example",
+             tel:                   "03000000000",
+             manage:                "Tester",
+             num_of_stylists:       5,
+             num_of_sheets:         8,
+             cut_price:             7890,
+             features:              "カット")
+
+Salon.create(category_id:           1,
+             prefecture_id:         13,
+             name:                  "東京タワー Salon",
+             place:                 "東京都港区芝公園4丁目",
+             email:                 "test4@example.com",
+             password:              "example",
+             password_confirmation: "example",
+             tel:                   "07000000000",
+             manage:                "Tester",
+             num_of_stylists:       5,
+             num_of_sheets:         8,
+             cut_price:             7890,
+             features:              "カット")
+
 Stylist.create!(salon_id:              1,
                 category_id:           1,
                 name:                  "西野　七瀬",
@@ -113,16 +148,40 @@ Stylist.create!(salon_id:              2,
                 password:              "example",
                 password_confirmation: "example",
                 stylist_since:         "2014",
+                activity_scope:        "渋谷区",
+                cut_price:             7980,
+                features:              "ロングヘアーのカット〜ケア")
+
+Stylist.create!(salon_id:              3,
+                category_id:           1,
+                name:                  "渡辺 直美",
+                tel:                   "05000000000",
+                email:                 "stylist3@example.com",
+                password:              "example",
+                password_confirmation: "example",
+                stylist_since:         "2011",
                 activity_scope:        "港区",
                 cut_price:             7980,
                 features:              "ロングヘアーのカット〜ケア")
 
+Stylist.create!(salon_id:              4,
+                category_id:           1,
+                name:                  "陣内　とものり",
+                tel:                   "04000000000",
+                email:                 "stylist4@example.com",
+                password:              "example",
+                password_confirmation: "example",
+                stylist_since:         "2011",
+                activity_scope:        "港区",
+                cut_price:             8980,
+                features:              "ロングヘアーのカット〜ケア")
+
 Menu.create!(stylist_id:     1,
-              menu_name:      "カット+シャンプー",
-              menu_price:     6980,
-              operation_time: 50,
-              content:        "カット、シャンプー、ブロー",
-              memo:           "時間内であれば軽めのセットまで可能です"
+             menu_name:      "カット+シャンプー",
+             menu_price:     6980,
+             operation_time: 50,
+             content:        "カット、シャンプー、ブロー",
+             memo:           "時間内であれば軽めのセットまで可能です"
 )
 
 Menu.create!(stylist_id:     1,
@@ -150,20 +209,45 @@ Menu.create!(stylist_id:     2,
 )
 
 10.times do |t|
+  SalonReservation.create!(salon_id:  1,
+                           book_time: "2019-06-#{1 + t} 12:00")
+end
+
+10.times do |t|
   SalonReservation.create!(salon_id:  2,
-                           book_time: "2019-05-#{1 + t} 12:00")
+                           book_time: "2019-06-#{1 + t} 13:00")
 end
 
 10.times do |t|
-  StylistReservation.create!(stylist_id: 1,
-                             book_time:  "2019-06-#{1 + t} 12:00",
+  StylistReservation.create!(stylist_id:     1,
+                             book_time:      "2019-06-#{1 + t} 12:00",
                              operation_time: 50,
-                             memo:       "時間内なら施術後のセットまでOK")
+                             memo:           "時間内なら施術後のセットまでOK")
 end
 
 10.times do |t|
-  StylistReservation.create!(stylist_id: 2,
-                             book_time:  "2019-06-#{1 + t} 13:00",
+  StylistReservation.create!(stylist_id:     2,
+                             book_time:      "2019-06-#{1 + t} 13:00",
                              operation_time: 60,
-                             memo:       "時間内なら施術後のセットまでOK")
+                             memo:           "時間内なら施術後のセットまでOK")
 end
+
+Reservation.create!(user_id:                1,
+                    salon_reservation_id:   1,
+                    stylist_reservation_id: 1,
+                    menu_id:                1)
+
+Reservation.create!(user_id:                1,
+                    salon_reservation_id:   5,
+                    stylist_reservation_id: 5,
+                    menu_id:                2)
+
+Reservation.create!(user_id:                1,
+                    salon_reservation_id:   9,
+                    stylist_reservation_id: 9,
+                    menu_id:                1)
+
+Reservation.create!(user_id:                1,
+                    salon_reservation_id:   14,
+                    stylist_reservation_id: 14,
+                    menu_id:                1)

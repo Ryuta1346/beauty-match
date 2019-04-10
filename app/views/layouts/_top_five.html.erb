@@ -1,0 +1,12 @@
+<div style="width: 95%; text-align: center; margin-top: 50px;">
+  <h2 style="color: gray">今人気のサロン</h2>
+  <% @salons.each.with_index(1) do |salon| %>
+    <div style="width: 23%; display: inline-block; border: 1px solid gray; height: 300px; border-radius: 5px; margin: auto 0;padding-top: 50px">
+      <%= salon.category.name %><br/>
+      <%= link_to salon.name, salon %><br/>
+      <%= salon.prefecture.name %><br/>
+      <%= salon.place %><br/>
+      <%= salon.cut_price %>円<br/>
+    </div>
+  <% end %>
+</div>

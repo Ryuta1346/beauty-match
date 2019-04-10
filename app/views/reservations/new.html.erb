@@ -1,0 +1,22 @@
+<h1>Reservations#new</h1>
+<p>Find me in app/views/reservations/new.html.erb</p>
+<%= form_for(@reservation) do |f| %>
+  <div>
+    <%= f.label :User %>
+    <%= f.collection_select :user_id, current_user || User.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :サロン %>
+    <%= f.collection_select :salon_reservation_id, SalonReservation.all, :id, :book_time %>
+  </div>
+
+  <div>
+    <%= f.label :スタイリスト %>
+    <%= f.collection_select :stylist_reservation_id, StylistReservation.all, :id, :book_time %>
+  </div>
+
+  <div>
+    <%= f.submit '予約する' %>
+  </div>
+<% end %>

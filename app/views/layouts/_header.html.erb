@@ -5,7 +5,7 @@
   <% elsif stylist_signed_in? %>
     <%= link_to current_stylist.name, admin_stylist_path %>
   <% elsif user_signed_in? %>
-    <%= link_to current_user.name, admin_user_path %>
+    <%= link_to current_user.name, user_path(current_user) %>
   <% else %>
     <%= link_to 'Users', new_user_session_path %>
     <%= link_to 'Salon', new_salon_session_path %>

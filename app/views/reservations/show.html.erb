@@ -1,0 +1,7 @@
+<h1>Reservations#show</h1>
+ユーザー名:<%= @reservation.user.name %><br/>
+サロン名:<%= @reservation.salon_reservation.salon.name %><br/>
+スタイリスト名:<%= @reservation.stylist_reservation.stylist.name %><br/>
+施術時間:<%= @reservation.salon_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
+施術時間:<%= @reservation.stylist_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
+場所:<%= @reservation.salon_reservation.salon.place %>

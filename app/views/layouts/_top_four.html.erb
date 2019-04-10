@@ -1,0 +1,10 @@
+<div style="width: 95%; text-align: center; margin-top: 50px;">
+  <h2 style="color: gray">おすすめスタイリスト</h2>
+  <% @stylists.each do |stylist| %>
+    <div style="width: 23%; display: inline-block; border: 1px solid gray; height: 300px; border-radius: 5px; margin: auto 0; padding-top: 50px">
+      スタイリスト:<%= link_to stylist.name, stylist %><br/>
+      所属サロン:<%= link_to stylist.salon.name, stylist.salon %><br/>
+      カット価格:<%= stylist.cut_price %>円<br/>
+    </div>
+  <% end %>
+</div>

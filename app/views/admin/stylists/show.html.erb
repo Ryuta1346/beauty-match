@@ -16,6 +16,6 @@
   <%= link_to 'Logout', destroy_stylist_session_path, method: :delete %>
   <h3>予約一覧</h3>
   <% @stylist_reservations.each.with_index(1) do |r, i| %>
-    <%= i %>: <%= link_to r.book_time, admin_stylist_stylist_reservation_path(id: r) %><br/>
+    <%= i %>: <%= link_to r.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_stylist_stylist_reservation_path(id: r) %><br/>
   <% end %>
 </div>

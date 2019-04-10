@@ -1,7 +1,8 @@
 <ul>
   <li><%= link_to current_stylist.name, admin_stylist_path %></li>
   <li><%= link_to "所属サロン:#{current_stylist.salon.name}", salon_path(current_stylist.salon) %></li>
-  <li><%= link_to "予約可能時間管理", admin_stylist_stylist_reservations_path %></li>
+  <li><%= link_to "予約時間管理", admin_stylist_stylist_reservations_path %></li>
+  <li><%= link_to '予約管理', "#" %></li>
   <li><%= link_to "メニュー管理", admin_stylist_menus_path %></li>
   <li><%= link_to "売上管理", "#" %></li>
   <li><%= link_to '顧客カルテ管理', "#" %></li>

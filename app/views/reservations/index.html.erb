@@ -1,0 +1,18 @@
+<h1>Reservations#index</h1>
+<% if user_signed_in? %>
+  <%= render 'shared/book' %>
+<% end %>
+
+<h3>サロンから探す</h3>
+<% @salon_reservations.each.with_index(1) do |r, i| %>
+  <%= r.salon.name %>:
+  <%= r.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
+<% end %>
+
+<h3>スタイリストから探す</h3>
+<% @stylist_reservations.each.with_index(1) do |r, i| %>
+  <%= r.stylist.name %>:
+  <%= r.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
+<% end %>
+
+<h3>直近の日時で探す</h3>
