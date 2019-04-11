@@ -12,9 +12,9 @@ class Admin::StylistsController < Admin::Base
   end
 
   def show
-    @stylist = current_stylist
+    @stylist              = current_stylist
     @stylist_reservations = current_stylist.stylist_reservations.all
-    @books        = @stylist.reservation_management
+    @books                = @stylist.reservation_management
   end
 
   def new
