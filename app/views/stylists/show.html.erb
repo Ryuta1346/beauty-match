@@ -7,7 +7,11 @@ Email:<%= @stylist.email %><br/>
 カット価格:<%= @stylist.cut_price %>円<br/>
 メニュー一覧:<% @stylist.menus.each do |menu| %>
   <%= menu.menu_name %>:<%= menu.menu_price %>円:<%= menu.operation_time %>分<br/>
-<% end %>
+<% end %><br/>
 
+<h2>予約可能時間一覧</h2>
+<% @reservations.each.with_index(1) do |r, i| %>
+  <%= i %>: <%= link_to r.simple_time, stylist_stylist_reservation_path(stylist_id: r.stylist_id, id: r) %><br/>
+<% end %>
 
 <%= link_to '戻る', :back %>

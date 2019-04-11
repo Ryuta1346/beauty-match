@@ -35,9 +35,13 @@ Rails.application.routes.draw do
     get '/member', to: 'stylists#member'
   end
 
+  resources :stylists, only: [:show, :index] do
+    resources :stylist_reservations
+  end
+
   resources :stylists, only:[:index, :show]
   resources :users
-  resources :reservations
+  resources :reservations, expect: [:new]
   resources :categories, only: [:index, :show]
   resources :stylist_reservations, only: [:show, :index]
 

@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def index
-    @salon_reservations   = SalonReservation.all
-    @stylist_reservations = StylistReservation.all
+    @salons   = Salon.all
+    @stylists = Stylist.all
     @reservation          = current_user.reservations.new if user_signed_in?
   end
 

@@ -14,8 +14,9 @@
   <%= link_to 'Edit', edit_admin_stylist_path %>
   <%= link_to 'Delete', admin_stylist_path, method: :delete, data: { confirm: "You sure?" } %>
   <%= link_to 'Logout', destroy_stylist_session_path, method: :delete %>
+
   <h3>予約一覧</h3>
-  <% @stylist_reservations.each.with_index(1) do |r, i| %>
-    <%= i %>: <%= link_to r.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_stylist_stylist_reservation_path(id: r) %><br/>
+  <% @books.each do |b| %>
+    <%= link_to b.user.name, user_path(b.user.id) %>:<%= b.stylist_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
   <% end %>
 </div>

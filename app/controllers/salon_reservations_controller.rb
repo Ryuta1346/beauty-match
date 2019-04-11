@@ -11,6 +11,7 @@ class SalonReservationsController < ApplicationController
 
   def show
     @salon_reservation = @salon.salon_reservations.find(params[:id])
+    @reservation = current_user.reservations.new
   end
 
   private

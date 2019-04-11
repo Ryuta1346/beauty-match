@@ -5,6 +5,22 @@
 備考:<%= @stylist_reservation.memo %>
 <br/>
 
+<%= form_for(@reservation) do |f| %>
+  <%= f.hidden_field :stylist_reservation_id, value: @stylist_reservation.id %>
+  <div class="field">
+    <%= f.label :メニュー %><br/>
+    <%= f.collection_select :menu_id, Menu.where(stylist_id: @stylist_reservation.stylist.id).all, :id, :menu_name, prompt: "選択してください" %>
+  </div>
+  <div class="field">
+    <%= f.label :サロン予約 %><br/>
+    <%= f.collection_select :salon_reservation_id, SalonReservation.where(book_time: @stylist_reservation.book_time).all, :id, :simple_time, prompt: "選択してください" %>
+  </div>
+  <div class="field">
+    <%= f.submit '予約' %>
+  </div>
+<% end %>
+
+<br/>
 <% @stylist_reservation.stylist.menus.each do |m| %>
   <div style="width:30%; border: 1px solid; padding: 10px; border-radius: 10px;margin: 10px">
     メニュー名:<%= m.menu_name %><br/>

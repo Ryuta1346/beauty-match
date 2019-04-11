@@ -4,7 +4,7 @@ class Admin::SalonsController < Admin::Base
   def show
     @salon        = current_salon
     @reservations = @salon.salon_reservations.all
-    @books        = @salon.reservation_management(@salon)
+    @books        = @salon.reservation_management
   end
 
   def edit

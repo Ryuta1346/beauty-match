@@ -17,9 +17,8 @@ class Salon < ApplicationRecord
   validates :features, presence: true
   validates :cut_price, presence: true
 
-  def reservation_management(current_salon)
+  def reservation_management
     salon_info = salon_reservations.all
-    # salon_info = SalonReservation.where(salon_id: current_salon.id).all
     Reservation.where(salon_reservation_id: salon_info).all
   end
 end

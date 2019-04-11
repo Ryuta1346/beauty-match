@@ -1,4 +1,13 @@
 <h1>SalonReservations#show</h1>
-<p>Find me in app/views/salon_reservations/show.html.erb</p>
+<%= @salon_reservation.simple_time %>
 
-<%= @salon_reservation.book_time %>
+<%= form_for(@reservation) do |f| %>
+  <%= f.hidden_field :salon_reservation_id, value: @salon_reservation.id %>
+  <div class="field">
+    <%= f.label :スタイリスト予約 %><br/>
+    <%= f.collection_select :stylist_reservation_id, StylistReservation.where(book_time: @salon_reservation.book_time).all, :id, :book_stylist, prompt: "選択してください" %>
+  </div>
+  <div class="field">
+    <%= f.submit '予約' %>
+  </div>
+<% end %>

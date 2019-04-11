@@ -14,6 +14,7 @@ class Admin::StylistsController < Admin::Base
   def show
     @stylist = current_stylist
     @stylist_reservations = current_stylist.stylist_reservations.all
+    @books        = @stylist.reservation_management
   end
 
   def new

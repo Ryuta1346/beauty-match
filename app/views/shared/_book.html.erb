@@ -1,12 +1,12 @@
 <%= form_for(@reservation) do |f| %>
   <div>
-    <%= f.label :サロン %>
-    <%= f.collection_select :salon_reservation_id, SalonReservation.all, :id, :book_time %>
+    <%= f.label :サロン予約 %><br/>
+    <%= f.collection_select :salon_reservation_id, SalonReservation.all, :id, :simple_time %>
   </div>
 
   <div>
-    <%= f.label :スタイリスト %>
-    <%= f.collection_select :stylist_reservation_id, StylistReservation.all, :id, :book_time %>
+    <%= f.label :スタイリスト予約 %><br/>
+    <%= f.collection_select :stylist_reservation_id, StylistReservation.all, :id, :simple_time %>
   </div>
 
   <div>

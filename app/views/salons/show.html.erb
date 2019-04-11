@@ -14,7 +14,7 @@ Email:<%= @salon.email %><br/>
 
 <h2>予約可能時間一覧</h2>
 <% @reservations.each.with_index(1) do |r, i| %>
-  <%= i %>: <%= link_to r.book_time, salon_salon_reservation_path(salon_id: r.salon_id, id: r) %><br/>
+  <%= i %>: <%= link_to r.simple_time, salon_salon_reservation_path(salon_id: r.salon_id, id: r) %><br/>
 <% end %>
 
 <%= link_to '戻る', :back %>

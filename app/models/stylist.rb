@@ -15,4 +15,9 @@ class Stylist < ApplicationRecord
   validates :activity_scope, presence: true
   validates :cut_price, presence: true
   validates :features, presence: true
+
+  def reservation_management
+    stylist_info = stylist_reservations.all
+    Reservation.where(stylist_reservation_id: stylist_info).all
+  end
 end

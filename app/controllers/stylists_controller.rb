@@ -10,6 +10,7 @@ class StylistsController < ApplicationController
 
   def show
     @stylist = Stylist.find(params[:id])
+    @reservations = @stylist.stylist_reservations.all
   end
 
   def create
