@@ -1,13 +1,20 @@
 <%= form_for(@reservation) do |f| %>
   <div>
     <%= f.label :サロン予約 %><br/>
-    <%= f.collection_select :salon_reservation_id, SalonReservation.all, :id, :simple_time %>
+    <%= f.collection_select :salon_reservation_id, @salon_reservation, :id, :book_salon %>
   </div>
 
   <div>
     <%= f.label :スタイリスト予約 %><br/>
-    <%= f.collection_select :stylist_reservation_id, StylistReservation.all, :id, :simple_time %>
+    <%= f.collection_select :stylist_reservation_id, @stylist_reservation, :id, :book_stylist %>
   </div>
+
+  <div>
+    <%= f.label :メニュー %><br/>
+    <%= f.collection_select :menu_id, Menu.all, :id, :menu_manage %>
+  </div>
+  <p style="font-size: 10px"> *非同期通信を用いて、メニュー表示をスタイリストに合わせたものだけ表示するようにする</p>
+
 
   <div>
     <%= f.submit '予約する' %>

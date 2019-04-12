@@ -8,13 +8,15 @@ TEL:<%= @salon.tel %><br/>
 Email:<%= @salon.email %><br/>
 特徴:<%= @salon.features %><br/>
 カット価格:<%= @salon.cut_price %><br/>
-所属スタイリスト数:<%= link_to @salon.num_of_stylists, salon_member_path(@salon)%><br/>
+所属スタイリスト数:<%= link_to @salon.num_of_stylists, salon_member_path(@salon) %><br/>
 座席数:<%= @salon.num_of_sheets %>
 <br/>
 
 <h2>予約可能時間一覧</h2>
 <% @reservations.each.with_index(1) do |r, i| %>
-  <%= i %>: <%= link_to r.simple_time, salon_salon_reservation_path(salon_id: r.salon_id, id: r) %><br/>
+  <%= i %>: <%= r.simple_time %>
+  <%= link_to '予約する', salon_salon_reservation_path(salon_id: r.salon_id, id: r) %>
+  <br/>
 <% end %>
 
 <%= link_to '戻る', :back %>

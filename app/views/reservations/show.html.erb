@@ -3,4 +3,5 @@
 サロン名:<%= @reservation.salon_reservation.salon.name %><br/>
 スタイリスト名:<%= @reservation.stylist_reservation.stylist.name %><br/>
 施術時間:<%= @reservation.stylist_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
-場所:<%= @reservation.salon_reservation.salon.place %>
+場所:<%= @reservation.salon_reservation.salon.place %><br/>
+<%= link_to 'キャンセル', reservation_path, method: :delete, data: { confirm: "予約をキャンセルしますか？" } %>

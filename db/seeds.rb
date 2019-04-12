@@ -209,7 +209,7 @@ Menu.create!(stylist_id:     2,
 )
 
 10.times do |t|
-  SalonReservation.create!(salon_id:  1,
+  SalonReservation.create!(salon_id:  3,
                            book_time: "2019-06-#{1 + t} 12:00")
 end
 
@@ -237,7 +237,7 @@ Reservation.create!(user_id:                1,
                     stylist_reservation_id: 1,
                     menu_id:                1)
 
-Reservation.create!(user_id:                1,
+Reservation.create!(user_id:                2,
                     salon_reservation_id:   5,
                     stylist_reservation_id: 5,
                     menu_id:                2)
@@ -247,7 +247,7 @@ Reservation.create!(user_id:                1,
                     stylist_reservation_id: 9,
                     menu_id:                1)
 
-Reservation.create!(user_id:                1,
+Reservation.create!(user_id:                2,
                     salon_reservation_id:   14,
                     stylist_reservation_id: 14,
                     menu_id:                1)

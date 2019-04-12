@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   resources :stylists, only:[:index, :show]
   resources :users
-  resources :reservations, expect: [:new]
+  resources :reservations, except: [:new, :edit, :update]
   resources :categories, only: [:index, :show]
   resources :stylist_reservations, only: [:show, :index]
 

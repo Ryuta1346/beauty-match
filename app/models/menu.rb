@@ -7,4 +7,8 @@ class Menu < ApplicationRecord
   validates :operation_time, presence: true, length: { maximum: 5 }
   validates :content, length: { maximum: 255 }
   validates :memo, length: { maximum: 255 }
+
+  def menu_manage
+    "【#{stylist.name}】:#{menu_name}"
+  end
 end

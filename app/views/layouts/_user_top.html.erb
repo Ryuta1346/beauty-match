@@ -3,7 +3,8 @@
   <%= link_to '予約', reservations_path %><br/>
   <% @user.reservations.each do |r| %>
     <%= r.salon_reservation.salon.name %>:<%= r.stylist_reservation.stylist.name %>:
-    <%= r.salon_reservation.simple_time %>:<%= r.menu.menu_name %><br/>
+    <%= r.salon_reservation.simple_time %>:<%= r.menu.menu_name %>
+    <%= link_to '詳細', reservation_path(r) %><br/>
   <% end %>
   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
   <%= link_to 'ユーザー情報編集', edit_user_registration_path %>

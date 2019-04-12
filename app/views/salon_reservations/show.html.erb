@@ -7,6 +7,13 @@
     <%= f.label :スタイリスト予約 %><br/>
     <%= f.collection_select :stylist_reservation_id, StylistReservation.where(book_time: @salon_reservation.book_time).all, :id, :book_stylist, prompt: "選択してください" %>
   </div>
+
+  <div class="field">
+    <%= f.label :メニュー %><br/>
+    <%= f.collection_select :menu_id, Menu.all, :id, :menu_name %>
+  </div>
+  <p style="font-size: 10px">*スタイリストに合わせたメニューだけ表示させるように改良予定</p>
+
   <div class="field">
     <%= f.submit '予約' %>
   </div>
