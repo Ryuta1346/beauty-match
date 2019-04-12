@@ -8,9 +8,9 @@
     <%= f.collection_select :stylist_reservation_id, StylistReservation.where(book_time: @salon_reservation.book_time).all, :id, :book_stylist, prompt: "選択してください" %>
   </div>
 
-  <div class="field">
+  <div>
     <%= f.label :メニュー %><br/>
-    <%= f.collection_select :menu_id, Menu.all, :id, :menu_name %>
+    <%= f.collection_select :menu_id, Menu.all, :id, :menu_manage, prompt: "選択してください" %>
   </div>
   <p style="font-size: 10px">*スタイリストに合わせたメニューだけ表示させるように改良予定</p>
 

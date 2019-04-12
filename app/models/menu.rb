@@ -11,4 +11,8 @@ class Menu < ApplicationRecord
   def menu_manage
     "【#{stylist.name}】:#{menu_name}"
   end
+
+  def menu_display
+    "【#{menu_name}】:#{operation_time}分"
+  end
 end

@@ -9,11 +9,11 @@
   <%= f.hidden_field :stylist_reservation_id, value: @stylist_reservation.id %>
   <div class="field">
     <%= f.label :メニュー %><br/>
-    <%= f.collection_select :menu_id, Menu.where(stylist_id: @stylist_reservation.stylist.id).all, :id, :menu_name, prompt: "選択してください" %>
+    <%= f.collection_select :menu_id, Menu.where('operation_time <= ?', @stylist_reservation.operation_time).where(stylist_id: @stylist_reservation.stylist.id).all, :id, :menu_display, prompt: "選択してください" %>
   </div>
   <div class="field">
     <%= f.label :サロン予約 %><br/>
-    <%= f.collection_select :salon_reservation_id, SalonReservation.where(book_time: @stylist_reservation.book_time).all, :id, :simple_time, prompt: "選択してください" %>
+    <%= f.collection_select :salon_reservation_id, SalonReservation.where(book_time: @stylist_reservation.book_time).all, :id, :book_salon, prompt: "選択してください" %>
   </div>
   <div class="field">
     <%= f.submit '予約' %>
