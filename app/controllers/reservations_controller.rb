@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   def index
     @salons              = Salon.where.not(id: FREE_SALON).all
     @stylists            = Stylist.all
-    @reservation         = current_user.reservations.new
+    @reservation         = Reservation.new
     @salon_reservation   = SalonReservation.where.not(salon_id: FREE_SALON).all
     @stylist_reservation = StylistReservation.all
   end

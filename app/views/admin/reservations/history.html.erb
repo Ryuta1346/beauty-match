@@ -1,0 +1,24 @@
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/salons/sidebar' %>
+</div>
+
+<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
+  <h3>取引スタイリスト</h3>
+  <table style="text-align: center; margin-bottom: 30px;">
+    <thead>
+    <tr>
+      <th>所属サロン</th>
+      <th>スタイリスト名</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @stylists.each do |s| %>
+      <tr>
+        <td><%= link_to s.salon_reservation.salon.name, salon_path(s.salon_reservation.salon.id) %></td>
+        <td><%= link_to s.stylist_reservation.stylist.name, stylist_path(s.stylist_reservation.stylist.id) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,11 +1,11 @@
 <ul>
   <li><%= link_to current_salon.name, admin_salon_path %></li>
   <li><%= link_to "予約時間管理", admin_salon_salon_reservations_path %></li>
-  <li><%= link_to '予約管理', "#" %></li>
+  <li><%= link_to '予約管理',  admin_salon_reservations_path %></li>
   <li><%= link_to "所属スタイリスト", admin_salon_stylists_path %></li>
   <li><%= link_to "売上管理", "#" %></li>
   <li><%= link_to '顧客カルテ管理', "#" %></li>
-  <li><%= link_to '取引スタイリスト管理', "#" %></li>
+  <li><%= link_to '取引スタイリスト管理', history_admin_salon_path %></li>
   <li><%= link_to 'サロン利用規約管理', "#" %></li>
   <li><%= link_to '設定', edit_admin_salon_path %></li>
   <li><%= link_to 'ログアウト', destroy_salon_session_path, method: :delete %></li>

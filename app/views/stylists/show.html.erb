@@ -11,7 +11,8 @@ Email:<%= @stylist.email %><br/>
 
 <h2>予約可能時間一覧</h2>
 <% @reservations.each.with_index(1) do |r, i| %>
-  <%= i %>: <%= link_to r.simple_time, stylist_stylist_reservation_path(stylist_id: r.stylist_id, id: r) %><br/>
+  <%= i %>: <%= r.simple_time %>
+  <%= link_to '予約する', stylist_stylist_reservation_path(stylist_id: r.stylist_id, id: r) %><br/>
 <% end %>
 
 <%= link_to '戻る', :back %>

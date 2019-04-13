@@ -1,0 +1,40 @@
+<table style="text-align: center; margin-bottom: 30px;">
+  <thead>
+  <tr>
+    <th>予約日時</th>
+    <th>スタイリスト名</th>
+    <th>メニュー名</th>
+    <th>取引状態</th>
+    <th>取引メモ</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td><%= @reservation.stylist_reservation.simple_time %></td>
+    <td><%= @reservation.stylist_reservation.stylist.name %></td>
+    <td><%= @reservation.menu.menu_name %></td>
+    <td>
+      <% if @reservation.finish_salon.nil? %>
+        <%= form_for(@reservation, url: admin_salon_reservation_path) do |f| %>
+          <%= f.hidden_field :finish_salon, value: true %>
+          <%= f.submit ' 取引完了' %>
+        <% end %>
+      <% else %>
+        取引完了済
+      <% end %>
+    </td>
+    <td>
+      <% if @reservation.salon_memo.nil? %>
+        <%= form_for(@reservation, url: admin_salon_reservation_path) do |f| %>
+          <%= f.text_field :salon_memo %>
+          <%= f.submit 'メモ登録' %>
+        <% end %>
+      <% else %>
+        <%= @reservation.salon_memo %>
+      <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<%= link_to '戻る', :back %>

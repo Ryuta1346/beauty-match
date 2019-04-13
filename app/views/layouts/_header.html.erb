@@ -1,14 +1,57 @@
-<nav>
-  <%= link_to "Home", root_path %>
-  <% if salon_signed_in? %>
-    <%= link_to current_salon.name, admin_salon_path %>
-  <% elsif stylist_signed_in? %>
-    <%= link_to current_stylist.name, admin_stylist_path %>
-  <% elsif user_signed_in? %>
-    <%= link_to current_user.name, user_path(current_user) %>
-  <% else %>
-    <%= link_to 'Users', new_user_session_path %>
-    <%= link_to 'Salon', new_salon_session_path %>
-    <%= link_to 'Stylist', new_stylist_session_path %>
-  <% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Beauty Spaces</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <%= link_to "Home", root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "予約", reservations_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "About", about_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Help", about_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Contact", about_path, class: "nav-link" %>
+      </li>
+      <% if salon_signed_in? %>
+        <li class="nav-item">
+          <%= link_to current_salon.name, admin_salon_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= render 'layouts/header_salon' %>
+        </li>
+      <% elsif stylist_signed_in? %>
+        <li class="nav-item">
+          <%= link_to current_stylist.name, admin_stylist_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= render 'layouts/header_stylist' %>
+        </li>
+      <% elsif user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to current_user.name, user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= render 'layouts/header_user' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Users', new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Salon', new_salon_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Stylist', new_stylist_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </nav>

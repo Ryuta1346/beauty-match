@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   def show
     if salon_signed_in? || stylist_signed_in?
       @user = User.find(params[:id])
+    elsif current_user == User.find(params[:id])
+      @user = User.find(params[:id])
     else
       redirect_to root_url
     end

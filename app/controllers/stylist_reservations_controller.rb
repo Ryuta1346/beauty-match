@@ -7,7 +7,11 @@ class StylistReservationsController < ApplicationController
 
   def show
     @stylist_reservation = @stylist.stylist_reservations.find(params[:id])
-    @reservation = current_user.reservations.new
+    if user_signed_in?
+      @reservation = current_user.reservations.new
+    else
+      redirect_to new_user_session_url
+    end
   end
 
   private

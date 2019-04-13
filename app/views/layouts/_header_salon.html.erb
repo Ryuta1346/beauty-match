@@ -1,0 +1,10 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    メニュー
+  </a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+  <%= link_to '予約一覧', admin_salon_salon_reservations_path, class: "dropdown-item" %>
+  <%= link_to 'ログアウト', destroy_salon_session_path, method: :delete, class: "dropdown-item" %>
+  <%= link_to 'サロン情報編集', edit_admin_salon_path, class: "dropdown-item" %>
+  <%= link_to 'アカウント削除', salon_registration_path, method: :delete, data: { confirm: "You sure?" }, class: "dropdown-item" %>
+</div>

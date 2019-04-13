@@ -2,7 +2,7 @@ class Admin::SalonReservationsController < Admin::Base
   before_action :authenticate_salon!
 
   def index
-    @books       = current_salon.salon_reservations.where("salon_reservations.book_time > ?", DateTime.now).all
+    @books       = current_salon.salon_reservations.where("book_time > ?", DateTime.now).all
     @reservation = current_salon.salon_reservations.build
   end
 

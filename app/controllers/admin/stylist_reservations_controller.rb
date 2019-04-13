@@ -11,7 +11,7 @@ class Admin::StylistReservationsController < Admin::Base
   end
 
   def create
-    @reservation = current_stylist.stylist_reservations.create(stylist_reservation_params)
+    @reservation = current_stylist.stylist_reservations.create!(stylist_reservation_params)
     if @reservation.save
       flash[:success] = "予約可能時間を追加しました"
       redirect_to admin_stylist_stylist_reservations_url
