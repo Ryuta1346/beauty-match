@@ -7,8 +7,8 @@
 TEL:<%= @salon.tel %><br/>
 Email:<%= @salon.email %><br/>
 特徴:<%= @salon.features %><br/>
-カット価格:<%= @salon.cut_price %><br/>
-所属スタイリスト数:<%= link_to @salon.num_of_stylists, salon_member_path(@salon) %><br/>
+カット価格:<%= @salon.cut_price %>円<br/>
+所属スタイリスト数:<%= link_to @salon.stylists.count, salon_member_path(@salon) %><br/>
 座席数:<%= @salon.num_of_sheets %>
 <br/>
 
