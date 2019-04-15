@@ -1,12 +1,10 @@
 class ReservationsController < ApplicationController
-  FREE_SALON = 1
-
   def index
     @salons              = Salon.where.not(id: FREE_SALON).all
     @stylists            = Stylist.all
     @reservation         = Reservation.new
-    @salon_reservation   = SalonReservation.where.not(salon_id: FREE_SALON).all
-    @stylist_reservation = StylistReservation.all
+    @salon_reservation   = SalonReservation.where.not(salon_id: FREE_SALON).where("book_time >= ?", DateTime.now).all
+    @stylist_reservation = StylistReservation.where("book_time >= ?", DateTime.now).all
   end
 
   def show
@@ -18,11 +16,8 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    # SalonReservationとStylistReservationのbook_timeのどちらも同じ場合のみcreateを成功させる
     @reservation = current_user.reservations.build(book_params)
-    book_time = @reservation.salon_reservation.book_time == @reservation.stylist_reservation.book_time
-    book_menu = @reservation.stylist_reservation.stylist.name == @reservation.menu.stylist.name
-    if book_time && book_menu
+    if @reservation.book_time_management
       @reservation.save
       flash[:success] = "予約登録に成功しました"
       redirect_to root_url
@@ -45,4 +40,6 @@ class ReservationsController < ApplicationController
     def book_params
       params.require(:reservation).permit(:user_id, :salon_reservation_id, :stylist_reservation_id, :menu_id)
     end
+
+    FREE_SALON = 1
 end

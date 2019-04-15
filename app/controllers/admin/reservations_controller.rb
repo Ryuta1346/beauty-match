@@ -1,10 +1,8 @@
 class Admin::ReservationsController < Admin::Base
   before_action :authenticate_salon!
 
-  FREE_SALON = 1
-
   def index
-    salon_data    = current_salon.salon_reservations.where("book_time >= ?", DateTime.now).all
+    salon_data    = current_salon.salon_reservations.where("book_time >= ?", DateTime.now).ids
     @reservations = Reservation.where(salon_reservation_id: salon_data).all
   end
 
@@ -23,6 +21,17 @@ class Admin::ReservationsController < Admin::Base
     end
   end
 
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    if @reservation.destroy
+      flash[:success] = "予約情報を削除しました"
+      redirect_to admin_salon_path
+    else
+      flash[:danger] = "予約情報の削除に失敗しました"
+      render admin_salon_reservations_path
+    end
+  end
+
   def history
     salon_data = current_salon.salon_reservations.all
     @stylists  = Reservation.where(salon_reservation_id: salon_data).all
@@ -33,4 +42,6 @@ class Admin::ReservationsController < Admin::Base
     def book_params
       params.require(:reservation).permit(:user_id, :salon_reservation_id, :stylist_reservation_id, :menu_id, :finish_salon, :finish_stylist, :salon_memo, :stylist_memo)
     end
+
+    FREE_SALON = 1
 end

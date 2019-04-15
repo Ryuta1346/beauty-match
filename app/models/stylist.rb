@@ -9,7 +9,8 @@ class Stylist < ApplicationRecord
   has_many :stylist_reservations
 
   validates :name, presence: true, length: { maximum: 20 }
-  validates :tel, presence: true, length: { maximum: 11, minimum: 11 }, uniqueness: true
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  validates :tel, presence: true, uniqueness: true, format: { with: VALID_PHONE_REGEX }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :stylist_since, presence: true
   validates :activity_scope, presence: true

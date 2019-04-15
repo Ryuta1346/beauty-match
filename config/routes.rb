@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
     resource :salon do
       resources :salon_reservations
-      resources :reservations, only:[:show, :index, :update]
+      resources :reservations, only:[:show, :index, :update, :destroy]
       get '/history', to: 'reservations#history'
       resources :stylists, only:[:show, :index]
     end

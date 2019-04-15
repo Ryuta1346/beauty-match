@@ -20,6 +20,7 @@
         <td><%= r.stylist_reservation.stylist.name %></td>
         <td><%= r.menu.menu_name %></td>
         <td><%= link_to '詳細', admin_salon_reservation_path(r) %></td>
+        <td><%= link_to '削除', admin_salon_reservation_path(r), method: :delete, data: { confirm: "削除しますか？" } %></td>
       </tr>
     <% end %>
     </tbody>

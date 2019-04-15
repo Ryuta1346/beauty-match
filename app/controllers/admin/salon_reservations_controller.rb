@@ -16,7 +16,6 @@ class Admin::SalonReservationsController < Admin::Base
   end
 
   def create
-    # 現在時刻より前の時間は登録できないようにする
     @reservation = current_salon.salon_reservations.create(salon_reservation_params)
     if @reservation.save
       flash[:success] = "登録に成功しました"

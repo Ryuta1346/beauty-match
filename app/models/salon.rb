@@ -11,7 +11,8 @@ class Salon < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }, uniqueness: true
   validates :place, presence: true, uniqueness: true
   validates :manage, presence: true, length: { maximum: 20 }
-  validates :tel, presence: true, length: { maximum: 11, minimum: 11 }, uniqueness: true
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  validates :tel, presence: true, uniqueness: true, format: { with: VALID_PHONE_REGEX }
   validates :num_of_stylists, presence: true, length: { maximum: 50 }
   validates :num_of_sheets, presence: true, length: { maximum: 50 }
   validates :features, presence: true
