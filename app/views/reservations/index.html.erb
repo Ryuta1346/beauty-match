@@ -1,16 +1,22 @@
-<h1>Reservations#index</h1>
+<h2 style="font-size: 20px">Beauty Spacesでサロン/スタイリスト予約する</h2>
 <% if user_signed_in? %>
   <%= render 'shared/book' %>
 <% end %>
 
-<h3>サロンから探す</h3>
-<% @salons.each.with_index(1) do |r, i| %>
-  <li><%= link_to r.name, r %></li>
-<% end %>
+<div style="padding: 30px">
+  <h3 style="font-size: 18px">サロンから探す</h3>
+  <% @salons.each.with_index(1) do |r, i| %>
+    <li><%= link_to r.name, r %></li>
+  <% end %>
+</div>
 
-<h3>スタイリストから探す</h3>
-<% @stylists.each.with_index(1) do |r, i| %>
-  <li><%= link_to r.name, r %></li>
-<% end %>
+<div style="padding: 30px">
+  <h3 style="font-size: 18px">スタイリストから探す</h3>
+  <% @stylists.each.with_index(1) do |r, i| %>
+    <li><%= link_to r.name, r %></li>
+  <% end %>
+</div>
 
-<h3>直近の日時で探す</h3>
+<div style="padding: 30px">
+  <h3 style="font-size: 18px">直近の日時で探す</h3>
+</div>
