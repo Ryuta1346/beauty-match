@@ -1,10 +1,16 @@
-<%= form_for(@book, url: admin_salon_salon_reservation_path) do |f| %>
-  <div class="field">
-    <%= f.label :book_time %>
-    <%= f.datetime_select :book_time %>
-  </div>
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/salons/sidebar' %>
+</div>
 
-  <div class="field">
-    <%= f.submit '登録' %>
-  </div>
-<% end %>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <%= form_for(@book, url: admin_salon_salon_reservation_path) do |f| %>
+    <div class="field">
+      <%= f.label :book_time %>
+      <%= f.datetime_select :book_time %>
+    </div>
+
+    <div class="field">
+      <%= f.submit '登録' %>
+    </div>
+  <% end %>
+</main>

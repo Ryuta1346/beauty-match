@@ -2,18 +2,34 @@
   <%= render 'admin/salons/sidebar' %>
 </div>
 
-<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
-  <h2><%= current_salon.name %>の予約可能時間一覧</h2>
-
-  <h3>予約可能時間を登録する</h3>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <h2>予約可能時間を登録する</h2>
   <%= render 'admin/salon_reservations/book_new' %>
 
 
-  <h3>予約可能時間一覧</h3>
-  <% @books.each.with_index(1) do |book, i| %>
-    <%= i %>.<%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_salon_salon_reservation_path(id: book.id) %>
-    <%= link_to '編集',  edit_admin_salon_salon_reservation_path(book) %>
-    <%= link_to '削除',  admin_salon_salon_reservation_path(book), method: :delete %>
-    <br/>
-  <% end %>
-</div>
+  <h2>予約可能時間一覧</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>予約可能日時</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @books.each.with_index(1) do |book, i| %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_salon_salon_reservation_path(id: book.id) %></td>
+          <td><%= link_to '編集',  edit_admin_salon_salon_reservation_path(book) %></td>
+          <td><%= link_to '削除',  admin_salon_salon_reservation_path(book), method: :delete, data: { confirm: "削除しますか？" } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</main>

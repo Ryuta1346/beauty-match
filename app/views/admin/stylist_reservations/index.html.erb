@@ -2,7 +2,7 @@
   <%= render 'admin/stylists/sidebar' %>
 </div>
 
-<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <h3>予約可能時間一覧</h3>
 
   <%= form_for(@reservation, url: admin_stylist_stylist_reservations_path) do |f| %>
@@ -29,4 +29,4 @@
   <% @books.each.with_index(1) do |book, i| %>
     <%= i %>.<%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_stylist_stylist_reservation_path(id: book.id) %><br/>
   <% end %>
-</div>
+</main>

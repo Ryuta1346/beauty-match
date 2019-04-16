@@ -2,9 +2,9 @@
   <%= render 'admin/salons/sidebar' %>
 </div>
 
-<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;padding-bottom: 30px;">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <h2><%= current_salon.name %>所属スタイリスト</h2>
   <% @stylists.each.with_index(1) do |s, i| %>
     <%= i %>.<%= s.name %>
   <% end %>
-</div>
+</main>

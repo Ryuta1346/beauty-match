@@ -23,12 +23,13 @@ Rails.application.routes.draw do
     resource :stylist do
       resources :menus
       resources :stylist_reservations
+      get '/books', to: 'reservations#books'
     end
     resource :salon do
       resources :salon_reservations
-      resources :reservations, only:[:show, :index, :update, :destroy]
+      resources :reservations, only: [:show, :index, :update, :destroy]
       get '/history', to: 'reservations#history'
-      resources :stylists, only:[:show, :index]
+      resources :stylists, only: [:show, :index]
     end
   end
 

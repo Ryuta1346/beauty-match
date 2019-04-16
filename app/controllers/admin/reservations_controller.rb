@@ -1,9 +1,15 @@
 class Admin::ReservationsController < Admin::Base
-  before_action :authenticate_salon!
+  before_action :authenticate_salon!, except: [:books]
+  before_action :authenticate_stylist!, only: [:books]
 
   def index
     salon_data    = current_salon.salon_reservations.where("book_time >= ?", DateTime.now).ids
     @reservations = Reservation.where(salon_reservation_id: salon_data).all
+  end
+
+  def books
+    stylist_data    = current_stylist.stylist_reservations.where("book_time >= ?", DateTime.now).ids
+    @reservations = Reservation.where(stylist_reservation_id: stylist_data).all
   end
 
   def show
@@ -33,7 +39,7 @@ class Admin::ReservationsController < Admin::Base
   end
 
   def history
-    salon_data = current_salon.salon_reservations.all
+    salon_data = current_salon.salon_reservations.ids
     @stylists  = Reservation.where(salon_reservation_id: salon_data).all
   end
 

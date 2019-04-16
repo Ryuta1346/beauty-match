@@ -2,8 +2,8 @@
   <%= render 'admin/stylists/sidebar' %>
 </div>
 
-<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
-  <h2>Edit <%= @stylist.name %></h2>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <h2>スタイリスト情報の編集</h2>
 
   <%= form_for(@stylist, url: admin_stylist_path) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -66,4 +66,4 @@
   <p><%= button_to "Delete Stylist", admin_stylist_path, data: { confirm: "Are you sure?" }, method: :delete %></p>
 
   <%= link_to "Back", admin_stylist_path %>
-</div>
+</main>

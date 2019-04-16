@@ -2,7 +2,7 @@
   <%= render 'admin/salons/sidebar' %>
 </div>
 
-<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <h2>Edit <%= @salon.name %></h2>
 
   <%= form_for(@salon, url: admin_salon_path) do |f| %>
@@ -86,4 +86,4 @@
   <p><%= button_to "Delete Salon", admin_salon_path, data: { confirm: "Are you sure?" }, method: :delete %></p>
 
   <%= link_to "Back", admin_salon_path %>
-</div>
+</main>

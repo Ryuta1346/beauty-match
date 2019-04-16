@@ -2,7 +2,7 @@
   <%= render 'admin/stylists/sidebar' %>
 </div>
 
-<div style="width:80%; border: 1px solid;float: right; margin: auto 0;padding-left: 20px;">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <h2><%= current_stylist.name %></h2>
   名前:<%= current_stylist.name %><br/>
   所属:<%= link_to current_stylist.salon.name, salon_path(@stylist.salon_id) %><br/>
@@ -15,8 +15,34 @@
   <%= link_to 'Delete', admin_stylist_path, method: :delete, data: { confirm: "You sure?" } %>
   <%= link_to 'Logout', destroy_stylist_session_path, method: :delete %>
 
-  <h3>予約一覧</h3>
-  <% @books.each do |b| %>
-    <%= link_to b.user.name, user_path(b.user.id) %>:<%= b.stylist_reservation.book_time.strftime('%Y年%m月%d日 %H:%M') %><br/>
-  <% end %>
-</div>
+  <div style="padding-top: 30px">
+    <h2>予約一覧</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+          <th>顧客名</th>
+          <th>予約日時</th>
+          <th>サロン名</th>
+          <th>サロン場所</th>
+          <th>メニュー名</th>
+          <th>施術予定時間</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @books.each do |b| %>
+          <tr>
+            <td><%= link_to b.user.name, user_path(b.user.id) %></td>
+            <td><%= b.stylist_reservation.simple_time %></td>
+            <td><%= link_to b.salon_reservation.salon.name, salon_path(b.salon_reservation.salon.id) %></td>
+            <td><%= b.menu.menu_name %></td>
+            <td><%= b.stylist_reservation.operation_time %>分</td>
+            <td><%= link_to '詳細', admin_stylist_stylist_reservation_path(b) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
