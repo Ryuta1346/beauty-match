@@ -1,6 +1,4 @@
-<div style="width: 15%; height:500px; border: 1px solid;float: left;">
-  <%= render 'admin/salons/sidebar' %>
-</div>
+<%= render 'admin/salons/sidebar' %>
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <h2>予約可能時間を登録する</h2>
@@ -24,8 +22,8 @@
         <tr>
           <td><%= i %></td>
           <td><%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_salon_salon_reservation_path(id: book.id) %></td>
-          <td><%= link_to '編集',  edit_admin_salon_salon_reservation_path(book) %></td>
-          <td><%= link_to '削除',  admin_salon_salon_reservation_path(book), method: :delete, data: { confirm: "削除しますか？" } %></td>
+          <td><%= link_to '編集', edit_admin_salon_salon_reservation_path(book) %></td>
+          <td><%= link_to '削除', admin_salon_salon_reservation_path(book), method: :delete, data: { confirm: "削除しますか？" } %></td>
         </tr>
       <% end %>
       </tbody>
