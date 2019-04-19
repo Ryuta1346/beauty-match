@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @salons              = Salon.where.not(id: FREE_SALON).all
