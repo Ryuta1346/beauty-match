@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       resources :salon_reservations
       resources :reservations, only: [:show, :index, :update, :destroy]
       get '/history', to: 'reservations#history'
+      get '/sales', to: 'reservations#sales'
       resources :stylists, only: [:show, :index]
     end
   end

@@ -5,6 +5,7 @@ class Admin::SalonsController < Admin::Base
     @salon        = current_salon
     @reservations = @salon.salon_reservations.all
     @books        = @salon.reservation_management
+    # @t_price      = Reservation.where(salon_reservation_id: @salon.salon_reservations.ids).all
   end
 
   def edit
@@ -28,4 +29,5 @@ class Admin::SalonsController < Admin::Base
     def salon_params
       params.require(:salon).permit(:category_id, :salon_id, :prefecture_id, :name, :email, :place, :manage, :tel, :features, :cut_price, :num_of_sheets, :num_of_stylists)
     end
+
 end

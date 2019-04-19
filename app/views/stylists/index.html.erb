@@ -1,4 +1,15 @@
-<h1>Stylists#index</h1>
+<h1>美容師一覧</h1>
 <% @stylists.each.with_index(1) do |s, i| %>
-  <%= i %>:<%= link_to s.name, stylist_path(s)%>
+  <div class="my-3 p-3 bg-white rounded shadow">
+    <h6 class="border-bottom border-gray pb-2 mb-0"><%= s.name %></h6>
+    <div class="media text-muted pt-3">
+      <ul>
+        <li>カテゴリー:<%= s.category.name %></li>
+        <li>基本活動範囲:<%= s.activity_scope %></li>
+        <li>得意分野:<%= s.features %></li>
+        <li>カット価格:<%= s.cut_price %>円</li>
+      </ul>
+    </div>
+    <%= link_to '詳細', stylist_path(s) %>
+  </div>
 <% end %>

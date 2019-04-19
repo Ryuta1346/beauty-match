@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @salons              = Salon.where.not(id: FREE_SALON).all
     @stylists            = Stylist.all
@@ -20,7 +22,7 @@ class ReservationsController < ApplicationController
     if @reservation.book_time_management
       @reservation.save
       flash[:success] = "予約登録に成功しました"
-      redirect_to root_url
+      redirect_to user_path(current_user)
     else
       flash[:danger] = "予約登録に失敗しました"
       redirect_to request.referrer || root_path

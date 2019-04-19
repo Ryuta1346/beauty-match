@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2019_04_13_125339) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "menu_id"
-    t.boolean "finish_salon"
-    t.boolean "finish_stylist"
+    t.boolean "finish_salon", default: false
+    t.boolean "finish_stylist", default: false
     t.string "salon_memo"
     t.string "stylist_memo"
     t.index ["menu_id"], name: "index_reservations_on_menu_id"

@@ -4,11 +4,11 @@ class Admin::ReservationsController < Admin::Base
 
   def index
     salon_data    = current_salon.salon_reservations.where("book_time >= ?", DateTime.now).ids
-    @reservations = Reservation.where(salon_reservation_id: salon_data).all
+    @reservations = Reservation.where(salon_reservation_id: salon_data).where(finish_salon: false).all
   end
 
   def books
-    stylist_data    = current_stylist.stylist_reservations.where("book_time >= ?", DateTime.now).ids
+    stylist_data  = current_stylist.stylist_reservations.where("book_time >= ?", DateTime.now).ids
     @reservations = Reservation.where(stylist_reservation_id: stylist_data).all
   end
 
@@ -16,14 +16,19 @@ class Admin::ReservationsController < Admin::Base
     @reservation = Reservation.find(params[:id])
   end
 
+  def sales
+    salon_data = current_salon.salon_reservations.ids
+    @sales     = Reservation.where(salon_reservation_id: salon_data).where(finish_salon: true).all
+  end
+
   def update
     @reservation = Reservation.find(params[:id])
     if @reservation.update_attributes!(book_params)
       flash[:success] = "取引情報の更新に成功しました"
-      redirect_to admin_salon_url
+      redirect_to admin_salon_reservation_url
     else
       flash[:danger] = "取引情報の更新に失敗しました"
-      render admin_salon_salon_reservations_path
+      render admin_salon_reservation_path
     end
   end
 
@@ -46,7 +51,13 @@ class Admin::ReservationsController < Admin::Base
   private
 
     def book_params
-      params.require(:reservation).permit(:user_id, :salon_reservation_id, :stylist_reservation_id, :menu_id, :finish_salon, :finish_stylist, :salon_memo, :stylist_memo)
+      params.require(:reservation).permit(:user_id,
+                                          :salon_reservation_id,
+                                          :stylist_reservation_id,
+                                          :menu_id, :finish_salon,
+                                          :finish_stylist,
+                                          :salon_memo,
+                                          :stylist_memo)
     end
 
     FREE_SALON = 1
