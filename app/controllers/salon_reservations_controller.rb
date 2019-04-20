@@ -5,10 +5,6 @@ class SalonReservationsController < ApplicationController
     @reservations = SalonReservation.all
   end
 
-  def books
-    @books = SalonReservation.all
-  end
-
   def show
     @salon_reservation = @salon.salon_reservations.find(params[:id])
     if user_signed_in?

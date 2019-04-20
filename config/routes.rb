@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'stylist_sales_memos/show'
-    get 'stylist_sales_memos/index'
-    get 'stylist_sales_memos/edit'
-  end
   root 'static_pages#top'
   get '/about', to: 'static_pages#about'
   get '/help', to: 'static_pages#help'
@@ -43,20 +38,17 @@ Rails.application.routes.draw do
   end
 
   resources :salons, only: [:show, :index] do
-    resources :salon_reservations
+    resources :salon_reservations, only: [:index, :show]
     get '/member', to: 'stylists#member'
   end
 
   resources :stylists, only: [:show, :index] do
-    resources :stylist_reservations
+    resources :stylist_reservations, only: [:index, :show]
   end
 
   resources :users
   resources :reservations, except: [:new, :edit, :update]
   resources :categories, only: [:index, :show]
-  resources :stylist_reservations, only: [:show, :index]
-
-  get '/books', to: 'salon_reservations#books'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
