@@ -1,21 +1,18 @@
 class Admin::ReservationsController < Admin::Base
   before_action :authenticate_salon!, except: [:books]
-  before_action :authenticate_stylist!, only: [:books]
 
+  # サロンの予約管理=>別コントローラへ切り出し
   def index
     salon_data    = current_salon.salon_reservations.where("book_time >= ?", DateTime.now).ids
     @reservations = Reservation.where(salon_reservation_id: salon_data).where(finish_salon: false).all
   end
 
-  def books
-    stylist_data  = current_stylist.stylist_reservations.where("book_time >= ?", DateTime.now).ids
-    @reservations = Reservation.where(stylist_reservation_id: stylist_data).all
-  end
-
+  # 予約詳細
   def show
     @reservation = Reservation.find(params[:id])
   end
 
+  # サロンの取引管理=>別コントローラへ切り出し
   def sales
     salon_data = current_salon.salon_reservations.ids
     @sales     = Reservation.where(salon_reservation_id: salon_data).where(finish_salon: true).all
@@ -43,6 +40,7 @@ class Admin::ReservationsController < Admin::Base
     end
   end
 
+  # サロンの取引スタイリスト管理=>別コントローラへ切り出し
   def history
     salon_data = current_salon.salon_reservations.ids
     @stylists  = Reservation.where(salon_reservation_id: salon_data).all

@@ -1,0 +1,37 @@
+<div class="row">
+  <%= render 'admin/stylists/sidebar' %>
+</div>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <h2>取引履歴</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>予約日時</th>
+        <th>顧客名</th>
+        <th>スタイリスト名</th>
+        <th>メニュー名</th>
+        <th>価格</th>
+        <th>施術予定時間</th>
+        <th>詳細</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @sales.each.with_index(1) do |s, i| %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= s.stylist_reservation.simple_time %></td>
+          <td><%= s.user.name %></td>
+          <td><%= s.stylist_reservation.stylist.name %></td>
+          <td><%= s.menu.menu_name %></td>
+          <td><%= s.menu.menu_price %>円</td>
+          <td><%= s.stylist_reservation.operation_time %>分</td>
+          <td><%= link_to '詳細', admin_stylist_stylist_sales_memo_path(s) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</main>

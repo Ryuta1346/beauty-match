@@ -16,15 +16,15 @@
       </li>
       <li class="nav-item">
         <span data-feather="shopping-cart"></span>
-        <%= link_to '予約管理', books_admin_stylist_path , class: "nav-link" %>
+        <%= link_to '予約管理',   reservations_admin_stylist_path , class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <span data-feather="bar-chart-2"></span>
+        <%= link_to "取引管理", sales_admin_stylist_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <span data-feather="users"></span>
         <%= link_to "メニュー管理", admin_stylist_menus_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <span data-feather="bar-chart-2"></span>
-        <%= link_to "売上管理", "#", class: "nav-link" %>
       </li>
       <li class="nav-item">
         <span data-feather="bar-chart-2"></span>
@@ -85,3 +85,5 @@
     </ul>
   </div>
 </nav>
+
+#スタイリストの取引履歴などの表示もちゃんとできるように、新しいテーブルを作成してreservations_controller.rbから取引完了やメモを切り離す

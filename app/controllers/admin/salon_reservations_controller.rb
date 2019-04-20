@@ -1,4 +1,4 @@
-class Admin::SalonReservationsController < Admin::Base
+class Admin::SalonReservationsController < Admin::ReservationsController
   before_action :authenticate_salon!
 
   def index

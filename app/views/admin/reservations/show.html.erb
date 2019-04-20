@@ -14,23 +14,23 @@
         <li>メニュー名:<%= @reservation.menu.menu_name %></li>
         <li>価格:<%= @reservation.menu.menu_price %>円</li>
         <li>取引状態:
-        <% if @reservation.finish_salon? %>
-          <a style="color: red;">取引完了済</a>
-        <% else %>
-          <%= form_for(@reservation, url: admin_salon_reservation_path) do |f| %>
-            <%= f.hidden_field :finish_salon, value: true %>
-            <%= f.submit ' 取引完了' %>
-          <% end %>
+          <% if @reservation.finish_salon? %>
+            <a style="color: red;">取引完了済</a>
+          <% else %>
+            <%= form_for(@reservation, url: admin_salon_reservation_path) do |f| %>
+              <%= f.hidden_field :finish_salon, value: true %>
+              <%= f.submit ' 取引完了' %>
+            <% end %>
           <% end %></li>
         <li>取引メモ:
-        <% if @reservation.salon_memo.nil? %>
-          <%= form_for(@reservation, url: admin_salon_reservation_path) do |f| %>
-            <%= f.text_field :salon_memo %>
-            <%= f.submit 'メモ登録' %>
+          <% if @reservation.salon_memo.nil? %>
+            <%= form_for(@reservation, url: admin_salon_reservation_path) do |f| %>
+              <%= f.text_field :salon_memo %>
+              <%= f.submit 'メモ登録' %>
+            <% end %>
+          <% else %>
+            <%= @reservation.salon_memo %>
           <% end %>
-        <% else %>
-          <%= @reservation.salon_memo %>
-        <% end %>
         </li>
       </ul>
     </div>

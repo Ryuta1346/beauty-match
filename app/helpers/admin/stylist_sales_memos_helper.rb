@@ -1,0 +1,2 @@
+module Admin::StylistSalesMemosHelper
+end

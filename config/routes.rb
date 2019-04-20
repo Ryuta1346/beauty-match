@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'stylist_sales_memos/show'
+    get 'stylist_sales_memos/index'
+    get 'stylist_sales_memos/edit'
+  end
   root 'static_pages#top'
   get '/about', to: 'static_pages#about'
   get '/help', to: 'static_pages#help'
@@ -23,8 +28,11 @@ Rails.application.routes.draw do
     resource :stylist do
       resources :menus
       resources :stylist_reservations
-      get '/books', to: 'reservations#books'
+      resources :stylist_sales_memos, except: [:index, :edit, :create, :new]
+      get '/reservations', to: 'stylist_sales_memos#index'
+      get '/sales', to: 'stylist_sales_memos#sales'
     end
+
     resource :salon do
       resources :salon_reservations
       resources :reservations, only: [:show, :index, :update, :destroy]
