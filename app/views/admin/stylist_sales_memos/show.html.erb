@@ -11,25 +11,24 @@
       <li>予約日時:<%= @sale.stylist_reservation.simple_time %></li>
       <li>メニュー名:<%= @sale.menu.menu_name %></li>
       <li>価格:<%= @sale.menu.menu_price %>円</li>
-      <li>取引状態:
-        <% if @sale.finish_stylist? %>
+      <% if @sale.finish_stylist? %>
+        <li>取引状態:
           <a style="color: red;">取引完了済</a>
-        <% else %>
-          <%= form_for(@sale, url: admin_stylist_stylist_sales_memo_path) do |f| %>
-            <%= f.hidden_field :finish_stylist, value: true %>
-            <%= f.submit ' 取引完了' %>
-          <% end %>
-        <% end %></li>
-      <li>取引メモ:
-        <% if @sale.stylist_memo.nil? %>
-          <%= form_for(@sale, url: admin_stylist_stylist_sales_memo_path) do |f| %>
+        </li>
+        <li>取引メモ:
+          <%= @sale.stylist_memo %>
+        </li>
+      <% else %>
+        <%= form_for(@sale, url: admin_stylist_stylist_sales_memo_path) do |f| %>
+          <li>取引状態:
+            <%= f.check_box :finish_stylist, value: true %>
+          </li>
+          <li>取引メモ:
             <%= f.text_field :stylist_memo %>
-            <%= f.submit 'メモ登録' %>
-          <% end %>
-        <% else %>
-          <%= @sale.stylist_sales_memo.memo %>
+          </li>
+          <%= f.submit '取引完了' %>
         <% end %>
-      </li>
+      <% end %>
     </ul>
   </div>
   <%= link_to 'delete', sales_admin_stylist_path, method: :delete, data: { confirm: "本当に削除しますか？" } %><br/>
