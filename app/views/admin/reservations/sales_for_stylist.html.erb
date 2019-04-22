@@ -28,7 +28,7 @@
           <td><%= s.menu.menu_name %></td>
           <td><%= s.menu.menu_price %>円</td>
           <td><%= s.stylist_reservation.operation_time %>分</td>
-          <td><%= link_to '詳細', admin_stylist_stylist_sales_memo_path(s) %></td>
+          <td><%= link_to '詳細', reservation_admin_stylist_path(s) %></td>
         </tr>
       <% end %>
       </tbody>

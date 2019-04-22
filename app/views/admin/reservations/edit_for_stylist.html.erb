@@ -1,0 +1,29 @@
+<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+  <%= render 'admin/stylists/sidebar' %>
+</div>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <h6 class="border-bottom border-gray pb-2 mb-0">
+    顧客名:<%= @reservation.user.name %><br/>
+    スタイリスト:<%= @reservation.stylist_reservation.stylist.name %></h6>
+  <div class="media text-muted pt-3">
+    <ul>
+      <li>予約日時:<%= @reservation.stylist_reservation.simple_time %></li>
+      <li>メニュー名:<%= @reservation.menu.menu_name %></li>
+      <li>価格:<%= @reservation.menu.menu_price %>円</li>
+      <%= form_for(@reservation, url: reservation_admin_stylist_path) do |f| %>
+        <li>取引状態:
+          <%= f.check_box :finish_stylist, value: true %>
+        </li>
+        <li>取引メモ:
+          <%= f.text_field :stylist_memo %>
+        </li>
+        <%= f.submit '取引完了' %>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to '編集', reservation_edit_admin_stylist_path %><br/>
+  <% unless @reservation.finish_stylist? %>
+    <%= link_to 'delete', reservation_admin_stylist_path, method: :delete, data: { confirm: "本当に削除しますか？" } %><br/>
+  <% end %>  <%= link_to '戻る', :back %>
+</main>

@@ -23,14 +23,18 @@ Rails.application.routes.draw do
     resource :stylist do
       resources :menus
       resources :stylist_reservations
-      resources :stylist_sales_memos, except: [:index, :edit, :create, :new]
-      get '/reservations', to: 'stylist_sales_memos#index'
-      get '/sales', to: 'stylist_sales_memos#sales'
+      get '/reservations', to: 'reservations#index_for_stylist'
+      get '/reservations/:id', to: 'reservations#show_for_stylist', as: 'reservation'
+      put '/reservations/:id', to: 'reservations#update_for_stylist'
+      patch '/reservations/:id', to: 'reservations#update_for_stylist'
+      delete '/reservations/:id', to: 'reservations#destroy_for_stylist'
+      get '/reservations/:id/edit', to: 'reservations#edit_for_stylist', as: 'reservation/edit'
+      get '/sales', to: 'reservations#sales_for_stylist'
     end
 
     resource :salon do
       resources :salon_reservations
-      resources :reservations, only: [:show, :index, :update, :destroy]
+      resources :reservations, only: [:show, :index, :update, :destroy, :edit]
       get '/history', to: 'reservations#history'
       get '/sales', to: 'reservations#sales'
       resources :stylists, only: [:show, :index]

@@ -3,30 +3,30 @@
 </div>
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-  <h3>予約可能時間一覧</h3>
+  <h2>予約可能時間を登録する</h2>
+  <%= render 'admin/stylist_reservations/book' %>
+  <h2>予約可能時間一覧</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>予約可能日時</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+      </thead>
 
-  <%= form_for(@reservation, url: admin_stylist_stylist_reservations_path) do |f| %>
-    <div>
-      <%= f.label :時間 %><br/>
-      <%= f.datetime_select :book_time, minute_step: 5 %>
-    </div>
-
-    <div>
-      <%= f.label :施術時間 %><br/>
-      <%= f.number_field :operation_time, min: 0, step: 5 %>
-    </div>
-
-    <div>
-      <%= f.label :備考 %><br/>
-      <%= f.text_field :memo %>
-    </div>
-
-    <div>
-      <%= f.submit '登録' %>
-    </div>
-  <% end %>
-  <br/>
-  <% @books.each.with_index(1) do |book, i| %>
-    <%= i %>.<%= link_to book.book_time.strftime('%Y年%m月%d日 %H:%M'), admin_stylist_stylist_reservation_path(id: book.id) %><br/>
-  <% end %>
+      <tbody>
+      <% @books.each.with_index(1) do |book, i| %>
+        <tr>
+          <td><%= i %></td>
+          <td><%=  book.simple_time %></td>
+          <td><%= link_to '編集', edit_admin_stylist_stylist_reservation_path(book) %></td>
+          <td><%= link_to '削除', admin_stylist_stylist_reservation_path(book), method: :delete, data: { confirm: "削除しますか？" } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </main>

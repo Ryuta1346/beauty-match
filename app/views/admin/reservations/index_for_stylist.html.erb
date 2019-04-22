@@ -26,8 +26,8 @@
           <td><%= r.salon_reservation.salon.name %></td>
           <td><%= r.salon_reservation.salon.place %></td>
           <td><%= r.menu.menu_name %></td>
-          <td><%= link_to '詳細', admin_stylist_stylist_sales_memo_path(r) %></td>
-          <td><%= link_to '削除', admin_stylist_stylist_sales_memo_path(r), method: :delete, data: { confirm: "削除しますか？" } %></td>
+          <td><%= link_to '詳細',  reservation_admin_stylist_path(r) %></td>
+          <td><%= link_to '削除', reservation_admin_stylist_path(r), method: :delete, data: { confirm: "削除しますか？" } %></td>
         </tr>
       <% end %>
       </tbody>

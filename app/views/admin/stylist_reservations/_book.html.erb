@@ -1,0 +1,20 @@
+<%= form_for(@reservation, url: admin_stylist_stylist_reservations_path) do |f| %>
+  <div>
+    <%= f.label :時間 %><br/>
+    <%= f.datetime_select :book_time, minute_step: 5 %>
+  </div>
+
+  <div>
+    <%= f.label :施術時間 %><br/>
+    <%= f.number_field :operation_time, min: 0, step: 5 %>
+  </div>
+
+  <div>
+    <%= f.label :備考 %><br/>
+    <%= f.text_field :memo %>
+  </div>
+
+  <div>
+    <%= f.submit '登録' %>
+  </div>
+<% end %>
