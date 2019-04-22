@@ -20,6 +20,12 @@
       <li class="nav-item">
         <%= link_to "Contact", contact_path, class: "nav-link" %>
       </li>
+      <li class="nav-item">
+        <%= link_to "サロン一覧", salons_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "スタイリスト一覧", stylists_path, class: "nav-link" %>
+      </li>
       <% if salon_signed_in? %>
         <li class="nav-item">
           <%= link_to current_salon.name, admin_salon_path, class: "nav-link" %>

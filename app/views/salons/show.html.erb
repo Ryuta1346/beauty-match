@@ -1,18 +1,21 @@
-<h1><%= @salon.name %></h1>
-カテゴリー:<%= @salon.category.name %><br/>
-サロン名:<%= @salon.name %><br/>
-都道府県:<%= @salon.prefecture.name %><br/>
-場所:<%= @salon.place %><br/>
-TEL:<%= @salon.tel %><br/>
-Email:<%= @salon.email %><br/>
-特徴:<%= @salon.features %><br/>
-<br/>
+<div class="container">
+  <h1><%= @salon.name %></h1>
+  カテゴリー:<%= @salon.category.name %><br/>
+  サロン名:<%= @salon.name %><br/>
+  都道府県:<%= @salon.prefecture.name %><br/>
+  場所:<%= @salon.place %><br/>
+  TEL:<%= @salon.tel %><br/>
+  Email:<%= @salon.email %><br/>
+  特徴:<%= @salon.features %><br/>
+  <%= link_to '所属スタイリスト一覧', salon_member_path(@salon) %>
+</div>
+<div class="container" style="padding-top: 30px">
+  <h2>予約可能時間一覧</h2>
+  <% @reservations.each.with_index(1) do |r, i| %>
+    <%= i %>: <%= r.simple_time %>
+    <%= link_to '予約する', salon_salon_reservation_path(salon_id: r.salon_id, id: r) %>
+    <br/>
+  <% end %>
 
-<h2>予約可能時間一覧</h2>
-<% @reservations.each.with_index(1) do |r, i| %>
-  <%= i %>: <%= r.simple_time %>
-  <%= link_to '予約する', salon_salon_reservation_path(salon_id: r.salon_id, id: r) %>
-  <br/>
-<% end %>
-
-<%= link_to '戻る', :back %>
+  <%= link_to '戻る', :back %>
+</div>

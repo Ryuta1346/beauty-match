@@ -1,4 +1,6 @@
-<h1><%= @salon.name %>所属のスタイリスト</h1>
-<% @stylists.each.with_index(1) do |s, i| %>
-  <%= i %>:<%= link_to s.name, stylist_path(s)%>
-<% end %>
+<div class="container">
+  <h2><%= @salon.name %>所属のスタイリスト</h2>
+  <% @stylists.each.with_index(1) do |s, i| %>
+    <%= i %>:<%= link_to s.name, stylist_path(s) %>
+  <% end %>
+</div>

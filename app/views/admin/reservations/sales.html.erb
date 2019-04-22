@@ -9,8 +9,8 @@
       <thead>
       <tr>
         <th>#</th>
-        <th>予約日時</th>
         <th>顧客名</th>
+        <th>予約日時</th>
         <th>スタイリスト名</th>
         <th>メニュー名</th>
         <th>価格</th>
@@ -22,8 +22,8 @@
       <% @sales.each.with_index(1) do |s, i| %>
         <tr>
           <td><%= i %></td>
-          <td><%= s.stylist_reservation.simple_time %></td>
           <td><%= s.user.name %></td>
+          <td><%= s.stylist_reservation.simple_time %></td>
           <td><%= s.stylist_reservation.stylist.name %></td>
           <td><%= s.menu.menu_name %></td>
           <td><%= s.menu.menu_price %>円</td>

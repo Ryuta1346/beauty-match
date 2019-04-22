@@ -4,8 +4,7 @@ class Admin::ReservationsController < Admin::Base
 
   # サロンの予約管理
   def index
-    salon_data    = current_salon.salon_reservations.where("book_time >= ?", DateTime.now).ids
-    @reservations = Reservation.where(salon_reservation_id: salon_data).where(finish_salon: false).all
+    @reservations = Reservation.get_incomplete_reservation(current_salon)
   end
 
   # サロンの予約詳細
@@ -15,8 +14,7 @@ class Admin::ReservationsController < Admin::Base
 
   # サロンの取引管理
   def sales
-    salon_data = current_salon.salon_reservations.ids
-    @sales     = Reservation.where(salon_reservation_id: salon_data).where(finish_salon: true).all
+    @sales = Reservation.get_complete_reservation(current_salon)
   end
 
   # サロンの取引情報更新
@@ -48,24 +46,21 @@ class Admin::ReservationsController < Admin::Base
     end
   end
 
-  # サロンの取引スタイリスト管理=>別コントローラへ切り出し
+  # サロンの取引スタイリスト管理
   def history
-    salon_data = current_salon.salon_reservations.ids
-    @stylists  = Reservation.where(salon_reservation_id: salon_data).all
+    @stylists = Reservation.get_trading_history(current_salon)
   end
 
   # スタイリストの予約管理の一覧ページ
   # get '/reservations'
   def index_for_stylist
-    stylist_data  = current_stylist.stylist_reservations.where("book_time >= ?", DateTime.now).ids
-    @reservations = Reservation.where(stylist_reservation_id: stylist_data).where(finish_stylist: false).all
+    @reservations = Reservation.incomplete_stylist_reservation(current_stylist)
   end
 
   # スタイリストの取引管理一覧ページ
   # get '/sales'
   def sales_for_stylist
-    stylist_data = current_stylist.stylist_reservations.ids
-    @sales       = Reservation.where(stylist_reservation_id: stylist_data).where(finish_stylist: true).all
+    @sales = Reservation.complete_stylist_reservation(current_stylist)
   end
 
   # スタイリストの個別予約情報
