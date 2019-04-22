@@ -13,10 +13,9 @@
     <%= f.label :メニュー %><br/>
     <%= f.collection_select :menu_id, Menu.all, :id, :menu_manage %>
   </div>
-  <p style="font-size: 10px"> *非同期通信を用いて、メニュー表示をスタイリストに合わせたものだけ表示するようにする</p>
+  <% "*非同期通信を用いて、メニュー表示をスタイリストに合わせたものだけ表示するようにする" %>
 
-
-  <div>
-    <%= f.submit '予約する' %>
+  <div style="padding-top: 20px">
+    <%= f.submit '予約する', class:"btn btn-primary" %>
   </div>
 <% end %>

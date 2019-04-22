@@ -13,6 +13,8 @@ class Reservation < ApplicationRecord
     book_time && book_menu
   end
 
+  #以下メソッドは今後リファクタリング予定
+
   # サロンの予約管理
   def self.get_incomplete_reservation(current_salon)
     salon_data = SalonReservation.where(salon_id: current_salon).where("book_time >= ?", DateTime.now).ids
