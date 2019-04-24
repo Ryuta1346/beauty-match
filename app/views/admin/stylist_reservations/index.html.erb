@@ -1,4 +1,4 @@
-<div style="width: 15%; height:500px; border: 1px solid;float: left;">
+<div class="row">
   <%= render 'admin/stylists/sidebar' %>
 </div>
 
@@ -21,7 +21,7 @@
       <% @books.each.with_index(1) do |book, i| %>
         <tr>
           <td><%= i %></td>
-          <td><%=  book.simple_time %></td>
+          <td><%= book.simple_time %></td>
           <td><%= link_to '編集', edit_admin_stylist_stylist_reservation_path(book) %></td>
           <td><%= link_to '削除', admin_stylist_stylist_reservation_path(book), method: :delete, data: { confirm: "削除しますか？" } %></td>
         </tr>

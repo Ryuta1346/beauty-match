@@ -1,4 +1,6 @@
-<%= render 'admin/salons/sidebar' %>
+<div class="row">
+  <%= render 'admin/salons/sidebar' %>
+</div>
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <h2>予約可能時間を登録する</h2>
@@ -21,7 +23,7 @@
       <% @books.each.with_index(1) do |book, i| %>
         <tr>
           <td><%= i %></td>
-          <td><%=  book.simple_time %></td>
+          <td><%= book.simple_time %></td>
           <td><%= link_to '編集', edit_admin_salon_salon_reservation_path(book) %></td>
           <td><%= link_to '削除', admin_salon_salon_reservation_path(book), method: :delete, data: { confirm: "削除しますか？" } %></td>
         </tr>
