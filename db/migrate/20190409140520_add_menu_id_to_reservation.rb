@@ -1,5 +1,5 @@
 class AddMenuIdToReservation < ActiveRecord::Migration[5.2]
   def change
-    add_reference :reservations, :menu, foreign_key: true
+    add_reference :reservations, :menu
   end
 end

@@ -16,25 +16,25 @@ ActiveRecord::Schema.define(version: 2019_04_13_125339) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "menus", force: :cascade do |t|
     t.bigint "stylist_id"
-    t.string "menu_name", null: false
-    t.integer "menu_price", null: false
-    t.integer "operation_time", null: false
-    t.string "content", null: false
-    t.text "memo", null: false
+    t.string "menu_name"
+    t.integer "menu_price"
+    t.integer "operation_time"
+    t.string "content"
+    t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stylist_id"], name: "index_menus_on_stylist_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,25 +58,25 @@ ActiveRecord::Schema.define(version: 2019_04_13_125339) do
 
   create_table "salon_reservations", force: :cascade do |t|
     t.bigint "salon_id"
-    t.datetime "book_time", null: false
+    t.datetime "book_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["salon_id"], name: "index_salon_reservations_on_salon_id"
   end
 
   create_table "salons", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "prefecture_id", null: false
-    t.string "manage", null: false
-    t.string "tel", null: false
-    t.integer "num_of_stylists", null: false
-    t.integer "num_of_sheets", null: false
-    t.string "features", null: false
-    t.integer "cut_price", null: false
+    t.bigint "category_id"
+    t.bigint "prefecture_id"
+    t.string "manage"
+    t.string "tel"
+    t.integer "num_of_stylists"
+    t.integer "num_of_sheets"
+    t.string "features"
+    t.integer "cut_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
-    t.string "place", null: false
+    t.string "name"
+    t.string "place"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -90,25 +90,25 @@ ActiveRecord::Schema.define(version: 2019_04_13_125339) do
 
   create_table "stylist_reservations", force: :cascade do |t|
     t.bigint "stylist_id"
-    t.datetime "book_time", null: false
-    t.string "memo", null: false
+    t.datetime "book_time"
+    t.string "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "operation_time", null: false
+    t.integer "operation_time"
     t.index ["stylist_id"], name: "index_stylist_reservations_on_stylist_id"
   end
 
   create_table "stylists", force: :cascade do |t|
     t.bigint "salon_id"
     t.bigint "category_id"
-    t.string "name", null: false
-    t.string "tel", null: false
-    t.integer "stylist_since", null: false
-    t.string "activity_scope", null: false
-    t.integer "cut_price", null: false
+    t.string "name"
+    t.string "tel"
+    t.integer "stylist_since"
+    t.string "activity_scope"
+    t.integer "cut_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "features", null: false
+    t.string "features"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(version: 2019_04_13_125339) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "tel", null: false
-    t.integer "birth_year", null: false
+    t.string "name"
+    t.string "tel"
+    t.integer "birth_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -136,9 +136,6 @@ ActiveRecord::Schema.define(version: 2019_04_13_125339) do
   end
 
   add_foreign_key "menus", "stylists"
-  add_foreign_key "reservations", "menus"
-  add_foreign_key "reservations", "salon_reservations"
-  add_foreign_key "reservations", "stylist_reservations"
   add_foreign_key "reservations", "users"
   add_foreign_key "salon_reservations", "salons"
   add_foreign_key "salons", "categories"
