@@ -3,8 +3,23 @@
 
 URL:https://beauty-spaces.herokuapp.com/
 
+#### テストアカウント
+##### [User]
+email:test_user1@example.com
 
-###### *デザイン等はシステムがあらかた完成した後から着手
+password:foobar
+
+##### [Salon] 
+email:test1@example.com
+
+password:example
+
+##### [Stylist] 
+
+email:stylist1@example.com
+
+password:example
+
 
 #### 目指すべきサービス像
 ・美容室はデッドスペースと化した座席の収益化を図れる
@@ -13,7 +28,7 @@ URL:https://beauty-spaces.herokuapp.com/
 
 ・ユーザーは特定の店舗に行かずともお気に入りの美容師に施術してもらえる
 
-#### 既存サービス
+#### 既存美容系サービス
 ・ホットペッパービューティー:美容室予約の最大手
 
 ・minimo:サロンスタッフ指名型予約サービス
