@@ -47,4 +47,6 @@ password:example
 
 ・rubocop
 
+・タスク管理: trello
+
 ・他随時更新
