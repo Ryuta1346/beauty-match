@@ -36,6 +36,7 @@ jobs:
       - run:
           name: Database setup
           command: |
+            DISABLE_SPRING=true
             bundle exec rake db:create db:schema:load --trace
             bundle exec rake db:migrate
 
