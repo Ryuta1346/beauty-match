@@ -36,9 +36,9 @@ jobs:
       - run:
           name: Database setup
           command: |
-            DISABLE_SPRING=true
-            bundle exec rake db:create db:schema:load --trace
-            bundle exec rake db:migrate
+            override:
+                - bundle install
+                - bundle exec rake db:create db:schema:load db:seed
 
       # run tests!
       # RSpecの実行も修正
