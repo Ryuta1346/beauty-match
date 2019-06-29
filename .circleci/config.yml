@@ -36,9 +36,8 @@ jobs:
       - run:
           name: Database setup
           command: |
-            override:
-                - bundle install
-                - bundle exec rake db:create db:schema:load db:seed
+            - bundle install
+            - bundle exec rake db:create db:schema:load db:seed
 
       # run tests!
       # RSpecの実行も修正
