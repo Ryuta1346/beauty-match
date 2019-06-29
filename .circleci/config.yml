@@ -37,7 +37,9 @@ jobs: # ステップの集合
 
       - run: # Ruby の依存関係をインストールします
           name: バンドルインストール
-          command: bundle check || bundle install
+          command: |
+            gem update --system
+            gem install bundler
 
       # Ruby の依存関係のバンドルキャッシュを保存します
 
