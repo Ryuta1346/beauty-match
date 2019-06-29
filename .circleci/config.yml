@@ -19,8 +19,11 @@ jobs:
       - restore_cache:
           key: rails-demo-{{ checksum "Gemfile.lock" }}
 
-      # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
+      - run: # Ruby の依存関係をインストールします
+          name: バンドルインストール
+          command: |
+            gem update --system
+            gem install bundler
 
       # Store bundle cache
       - save_cache:
