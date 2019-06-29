@@ -55,8 +55,8 @@ jobs: # ステップの集合
       - run:
           name: データベースをセットアップ
           command: |
-            bundle exec rake db:create
-            bundle exec rake db:schema:load
+            bin/rails db:create
+            bin/rails db:schema:load
 
       - run:
           name: RSpec を並列実行
