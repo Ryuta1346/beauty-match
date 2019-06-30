@@ -1,21 +1,19 @@
-
-
 version: 2 # CircleCI 2.0 を使用します
 jobs: # ステップの集合
   build: # Workflows を使用しない実行では、エントリポイントとして `build` ジョブが必要
     parallelism: 3 # このジョブのインスタンスを 3つ並列実行します
     docker: # Docker でステップを実行します
-      - image: circleci/ruby:2.5.1 # このイメージをすべての `steps` が実行されるプライマリコンテナとして使用します
+      - image: circleci/ruby:2.5.1-jessie-node # このイメージをすべての `steps` が実行されるプライマリコンテナとして使用します
         environment: # プライマリコンテナの環境変数
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
-          PGUSER: root
+          PGUSER: circleci-demo-ruby
           RAILS_ENV: test
       - image: circleci/postgres:11.1 # データベースイメージ
         environment: # データベースの環境変数
-          POSTGRES_USER: root
+          POSTGRES_USER: circleci-demo-ruby
           POSTGRES_DB: beauty-match_test
           POSTGRES_PASSWORD: ""
     steps: # 実行可能コマンドの集合
@@ -45,6 +43,24 @@ jobs: # ステップの集合
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+
+      # アプリケーションで Webpacker または Yarn を他の何らかの方法で使用する場合にのみ必要です
+
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+
+      - run:
+          name: Yarn をインストール
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Yarn または Webpacker のキャッシュを保存します
+
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 
       - run:
           name: DB を待機
