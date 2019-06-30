@@ -11,11 +11,11 @@ jobs: # ステップの集合
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
-          PGUSER: circleci-demo-ruby
+          PGUSER: root
           RAILS_ENV: test
       - image: circleci/postgres:11.1 # データベースイメージ
         environment: # データベースの環境変数
-          POSTGRES_USER: circleci-demo-ruby
+          POSTGRES_USER: root
           POSTGRES_DB: beauty-match_test
           POSTGRES_PASSWORD: ""
     steps: # 実行可能コマンドの集合
